@@ -61,14 +61,9 @@ export default function Home() {
             </div>
 
             <div className="relative">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-green-100 via-emerald-50 to-green-100 shadow-2xl">
-                {/* Decorative elements */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-64 h-64 bg-gradient-to-br from-green-400/30 to-emerald-500/30 rounded-full blur-3xl" />
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Leaf className="w-48 h-48 text-green-600/20" />
-                </div>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[2.5rem] shadow-2xl">
+                {/* Background Image */}
+                <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&h=600&fit=crop&q=80" alt="Crop Field" className="absolute inset-0 w-full h-full object-cover" />
                 {/* Floating stats */}
                 <div className="absolute top-8 right-8 bg-white rounded-2xl p-4 shadow-xl">
                   <div className="text-3xl font-bold text-green-600">93K+</div>
