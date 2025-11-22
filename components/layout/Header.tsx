@@ -16,6 +16,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Search } from "lucide-react"
+import Image from "next/image"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -44,116 +45,82 @@ export function Header() {
   const [isOpen, setIsOpen] = React.useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-lg supports-[backdrop-filter]:bg-white/80 shadow-sm overflow-x-hidden">
-      <div className="container mx-auto flex h-16 items-center justify-between px-6 md:px-12 lg:px-20 max-w-[1400px] w-full gap-6">
-        <div className="mr-4 hidden md:flex items-center gap-6">
-          <Link href="/" className="flex items-center space-x-2 shrink-0">
-            <div className="w-10 h-10 bg-gradient-to-br from-green-600 to-emerald-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
-              K
-            </div>
-            <span className="hidden font-extrabold sm:inline-block text-3xl bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
-              KRISHIDHAN
-            </span>
-          </Link>
-          
-          {/* Search Bar */}
-          <div className="flex-1 max-w-4xl">
-            <div className="relative flex items-center">
-              <input
-                type="text"
-                placeholder="Search seeds, products..."
-                className="w-full pl-10 pr-4 py-3 bg-green-50 border border-green-200 rounded-full text-base text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
-              />
-              <Search className="absolute left-3 h-4 w-4 text-gray-400 pointer-events-none" />
-            </div>
-          </div>
+    <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/60">
+      <div className="container mx-auto flex h-16 md:h-20 items-center justify-between px-4 md:px-8 max-w-7xl">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2 transition-opacity hover:opacity-90">
+          <Image 
+            src="/krishidhan-logo.png" 
+            alt="Krishidhan" 
+            width={180} 
+            height={50} 
+            className="h-10 md:h-12 w-auto object-contain" 
+            priority 
+          />
+        </Link>
 
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <Link href="/" legacyBehavior passHref>
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-semibold text-lg text-gray-700 hover:text-green-600 bg-green-50 hover:bg-green-100 px-6 py-3 rounded-full transition-colors")}>
-                    Home
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/about" legacyBehavior passHref>
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-semibold text-lg text-gray-700 hover:text-green-600 bg-green-50 hover:bg-green-100 px-6 py-3 rounded-full transition-colors")}>
-                    About Us
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/products" legacyBehavior passHref>
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-semibold text-lg text-gray-700 hover:text-green-600 bg-green-50 hover:bg-green-100 px-6 py-3 rounded-full transition-colors")}>
-                    Products
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/research" legacyBehavior passHref>
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-semibold text-lg text-gray-700 hover:text-green-600 bg-green-50 hover:bg-green-100 px-6 py-3 rounded-full transition-colors")}>
-                    R&D
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/contact" legacyBehavior passHref>
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-semibold text-lg text-gray-700 hover:text-green-600 bg-green-50 hover:bg-green-100 px-6 py-3 rounded-full transition-colors")}>
-                    Contact
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-8">
+          <Link href="/" className="text-sm font-medium text-gray-700 hover:text-green-700 transition-colors">
+            Home
+          </Link>
+          <Link href="/about" className="text-sm font-medium text-gray-700 hover:text-green-700 transition-colors">
+            About Us
+          </Link>
+          <Link href="/products" className="text-sm font-medium text-gray-700 hover:text-green-700 transition-colors">
+            Products
+          </Link>
+          <Link href="/research" className="text-sm font-medium text-gray-700 hover:text-green-700 transition-colors">
+            R&D
+          </Link>
+          <Link href="/contact" className="text-sm font-medium text-gray-700 hover:text-green-700 transition-colors">
+            Contact
+          </Link>
+        </nav>
+
+        {/* Actions */}
+        <div className="hidden md:flex items-center gap-4">
+          <button className="p-2 text-gray-500 hover:text-green-700 hover:bg-green-50 rounded-full transition-all">
+            <Search className="h-5 w-5" />
+          </button>
+          <Button className="bg-green-700 hover:bg-green-800 text-white rounded-full px-6 h-10 text-sm font-medium">
+            Get in Touch
+          </Button>
         </div>
         
         {/* Mobile Menu */}
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-          <Link href="/" className="flex md:hidden items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-green-600 to-emerald-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
-              K
-            </div>
-            <span className="font-extrabold text-xl bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
-              KRISHIDHAN
-            </span>
-          </Link>
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                className="px-3 text-base hover:bg-green-50 md:hidden rounded-xl"
-              >
-                <Menu className="h-6 w-6 text-green-600" />
-                <span className="sr-only">Toggle Menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="pr-0 w-80">
-              <div className="px-6">
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger asChild className="md:hidden">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-gray-700"
+            >
+              <Menu className="h-6 w-6" />
+              <span className="sr-only">Toggle Menu</span>
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right" className="w-[300px] sm:w-[400px] p-0">
+            <div className="flex flex-col h-full bg-white">
+              <div className="p-6 border-b border-gray-100">
                 <Link
                   href="/"
-                  className="flex items-center gap-3"
+                  className="flex items-center"
                   onClick={() => setIsOpen(false)}
                 >
-                  <div className="w-10 h-10 bg-gradient-to-br from-green-600 to-emerald-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                    K
-                  </div>
-                  <span className="font-extrabold text-xl bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
-                    KRISHIDHAN
-                  </span>
+                  <Image src="/krishidhan-logo.png" alt="Krishidhan" width={140} height={40} className="h-10 w-auto object-contain" />
                 </Link>
               </div>
-              <div className="flex flex-col gap-2 mt-8 px-6">
-                  <Link href="/" onClick={() => setIsOpen(false)} className="text-base font-semibold text-gray-700 hover:text-green-600 hover:bg-green-50 p-3 rounded-xl transition-colors">Home</Link>
-                  <Link href="/about" onClick={() => setIsOpen(false)} className="text-base font-semibold text-gray-700 hover:text-green-600 hover:bg-green-50 p-3 rounded-xl transition-colors">About Us</Link>
-                  <Link href="/products" onClick={() => setIsOpen(false)} className="text-base font-semibold text-gray-700 hover:text-green-600 hover:bg-green-50 p-3 rounded-xl transition-colors">Products</Link>
-                  <Link href="/research" onClick={() => setIsOpen(false)} className="text-base font-semibold text-gray-700 hover:text-green-600 hover:bg-green-50 p-3 rounded-xl transition-colors">R&D</Link>
-                  <Link href="/contact" onClick={() => setIsOpen(false)} className="text-base font-semibold text-gray-700 hover:text-green-600 hover:bg-green-50 p-3 rounded-xl transition-colors">Contact</Link>
+              <div className="flex flex-col py-6">
+                <Link href="/" onClick={() => setIsOpen(false)} className="px-6 py-3 text-base font-medium text-gray-700 hover:text-green-700 hover:bg-green-50 transition-colors">Home</Link>
+                <Link href="/about" onClick={() => setIsOpen(false)} className="px-6 py-3 text-base font-medium text-gray-700 hover:text-green-700 hover:bg-green-50 transition-colors">About Us</Link>
+                <Link href="/products" onClick={() => setIsOpen(false)} className="px-6 py-3 text-base font-medium text-gray-700 hover:text-green-700 hover:bg-green-50 transition-colors">Products</Link>
+                <Link href="/research" onClick={() => setIsOpen(false)} className="px-6 py-3 text-base font-medium text-gray-700 hover:text-green-700 hover:bg-green-50 transition-colors">R&D</Link>
+                <Link href="/contact" onClick={() => setIsOpen(false)} className="px-6 py-3 text-base font-medium text-gray-700 hover:text-green-700 hover:bg-green-50 transition-colors">Contact</Link>
               </div>
-            </SheetContent>
-          </Sheet>
-        </div>
+            </div>
+          </SheetContent>
+        </Sheet>
       </div>
     </header>
   )
