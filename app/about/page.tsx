@@ -1,67 +1,80 @@
 import { getCompanyInfo } from "@/lib/data";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { CheckCircle2, Building2, Users, Target } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { CheckCircle2, Building2, Users, Target, Award, Sparkles } from "lucide-react";
 
 export default function AboutPage() {
   const { about } = getCompanyInfo();
   
-  // Fallback content if data is missing
   const paragraphs = about?.paragraphs || [];
   const vision = about?.headings.find(h => h.toLowerCase().includes('vision')) ? 
                  paragraphs[2] : "To emerge as one of the leading technology driven Indian agri input company.";
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-b from-white via-green-50/30 to-white">
       {/* Header Section */}
-      <section className="bg-green-50 dark:bg-green-950/30 py-16 md:py-24">
-        <div className="container px-4 md:px-6">
-          <div className="max-w-3xl mx-auto text-center space-y-4">
-            <h1 className="text-4xl font-bold tracking-tight text-green-900 dark:text-green-50 sm:text-5xl">
-              About Krishidhan
+      <section className="relative bg-gradient-to-br from-green-600 via-emerald-600 to-green-700 text-white py-24 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-yellow-300 rounded-full blur-3xl" />
+        </div>
+        <div className="container px-4 md:px-8 lg:px-12 relative z-10">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <Badge className="mb-2 px-4 py-2 bg-white/20 text-white hover:bg-white/20 text-sm font-semibold backdrop-blur-sm">
+              About Us
+            </Badge>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
+              Cultivating Excellence Since 1996
             </h1>
-            <p className="text-lg text-muted-foreground">
-              Cultivating prosperity for farmers through innovation and excellence since 1996.
+            <p className="text-xl md:text-2xl text-green-50 max-w-3xl mx-auto">
+              Pioneering agricultural innovation and empowering farmers across India with premium seed solutions.
             </p>
           </div>
         </div>
       </section>
 
-      <div className="container px-4 md:px-6 py-12 space-y-16">
+      <div className="container px-4 md:px-8 lg:px-12 py-16 space-y-20">
         {/* Main Content Grid */}
-        <div className="grid gap-12 lg:grid-cols-3">
+        <div className="grid gap-16 lg:grid-cols-3">
           {/* Left Column: Main Story */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-10">
             <div>
-              <h2 className="text-2xl font-bold text-green-800 mb-4">Our Journey</h2>
-              <div className="prose dark:prose-invert max-w-none text-muted-foreground space-y-4">
-                <p>{paragraphs[0]}</p>
-                <p>{paragraphs[1]}</p>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-1 h-12 bg-gradient-to-b from-green-600 to-emerald-600 rounded-full" />
+                <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">Our Journey</h2>
+              </div>
+              <div className="prose prose-lg max-w-none text-gray-700 space-y-6 leading-relaxed">
+                <p className="text-lg">{paragraphs[0]}</p>
+                <p className="text-lg">{paragraphs[1]}</p>
               </div>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2">
-               <Card className="bg-green-50 border-green-100">
-                 <CardHeader>
-                   <CardTitle className="flex items-center gap-2 text-green-800">
-                     <Target className="h-5 w-5" /> Our Vision
-                   </CardTitle>
+               <Card className="card-hover border-0 shadow-xl bg-gradient-to-br from-green-50 to-emerald-50 overflow-hidden relative">
+                 <div className="absolute top-0 right-0 w-32 h-32 bg-green-200/30 rounded-full blur-2xl" />
+                 <CardHeader className="relative">
+                   <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                     <Target className="h-6 w-6 text-white" />
+                   </div>
+                   <CardTitle className="text-2xl font-bold text-green-900">Our Vision</CardTitle>
                  </CardHeader>
-                 <CardContent>
-                   <p className="text-sm text-green-900/80 leading-relaxed">
+                 <CardContent className="relative">
+                   <p className="text-base text-gray-700 leading-relaxed">
                      {vision}
                    </p>
                  </CardContent>
                </Card>
                
-               <Card className="bg-yellow-50 border-yellow-100">
-                 <CardHeader>
-                   <CardTitle className="flex items-center gap-2 text-yellow-800">
-                     <Users className="h-5 w-5" /> Our Mission
-                   </CardTitle>
+               <Card className="card-hover border-0 shadow-xl bg-gradient-to-br from-yellow-50 to-orange-50 overflow-hidden relative">
+                 <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-200/30 rounded-full blur-2xl" />
+                 <CardHeader className="relative">
+                   <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                     <Users className="h-6 w-6 text-white" />
+                   </div>
+                   <CardTitle className="text-2xl font-bold text-yellow-900">Our Mission</CardTitle>
                  </CardHeader>
-                 <CardContent>
-                   <p className="text-sm text-yellow-900/80 leading-relaxed">
+                 <CardContent className="relative">
+                   <p className="text-base text-gray-700 leading-relaxed">
                      To provide access to latest technologies and all required quality agri inputs for the social economic growth of farmers.
                    </p>
                  </CardContent>
@@ -69,55 +82,70 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Right Column: Quick Facts / Sidebar */}
+          {/* Right Column: Highlights */}
           <div className="space-y-6">
-            <Card>
+            <Card className="border-0 shadow-xl bg-white">
               <CardHeader>
-                <CardTitle className="text-lg">Key Highlights</CardTitle>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
+                    <Award className="h-5 w-5 text-white" />
+                  </div>
+                  <CardTitle className="text-xl font-bold">Key Highlights</CardTitle>
+                </div>
               </CardHeader>
               <CardContent className="space-y-4">
                 {[
-                  "Established in 1996",
-                  "DSIR Recognized R&D",
-                  "Top 10 Seed Company in India",
-                  "Global Presence",
-                  "ISO Certified Processes"
+                  { text: "Established in 1996", icon: CheckCircle2 },
+                  { text: "DSIR Recognized R&D", icon: Sparkles },
+                  { text: "Top 10 Seed Company in India", icon: Award },
+                  { text: "Global Presence", icon: Building2 },
+                  { text: "ISO Certified Processes", icon: CheckCircle2 }
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <CheckCircle2 className="h-4 w-4 text-green-600" />
-                    <span className="text-sm font-medium">{item}</span>
+                  <div key={i} className="flex items-center gap-3 p-3 rounded-xl hover:bg-green-50 transition-colors">
+                    <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <item.icon className="h-4 w-4 text-green-600" />
+                    </div>
+                    <span className="text-sm font-semibold text-gray-900">{item.text}</span>
                   </div>
                 ))}
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Infrastructure</CardTitle>
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-gray-900 to-gray-800 text-white overflow-hidden relative">
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-white rounded-full blur-2xl" />
+              </div>
+              <CardHeader className="relative">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                    <Building2 className="h-5 w-5 text-white" />
+                  </div>
+                  <CardTitle className="text-xl font-bold">Infrastructure</CardTitle>
+                </div>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <Building2 className="h-5 w-5 text-muted-foreground mt-0.5" />
-                  <div>
-                    <p className="font-medium text-sm">Corporate Office</p>
-                    <p className="text-xs text-muted-foreground">Pune, Maharashtra</p>
+              <CardContent className="space-y-5 relative">
+                <div className="space-y-2 p-4 bg-white/10 backdrop-blur-sm rounded-xl">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-green-400 rounded-full" />
+                    <p className="font-bold text-sm">Corporate Office</p>
                   </div>
+                  <p className="text-xs text-gray-300 ml-4">Pune, Maharashtra</p>
                 </div>
-                <Separator />
-                <div className="flex items-start gap-3">
-                  <Building2 className="h-5 w-5 text-muted-foreground mt-0.5" />
-                  <div>
-                    <p className="font-medium text-sm">Registered Office</p>
-                    <p className="text-xs text-muted-foreground">Indore, Madhya Pradesh</p>
+                
+                <div className="space-y-2 p-4 bg-white/10 backdrop-blur-sm rounded-xl">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-yellow-400 rounded-full" />
+                    <p className="font-bold text-sm">Registered Office</p>
                   </div>
+                  <p className="text-xs text-gray-300 ml-4">Indore, Madhya Pradesh</p>
                 </div>
-                <Separator />
-                <div className="flex items-start gap-3">
-                  <Building2 className="h-5 w-5 text-muted-foreground mt-0.5" />
-                  <div>
-                    <p className="font-medium text-sm">Seed Capital</p>
-                    <p className="text-xs text-muted-foreground">Jalna, Maharashtra (16 acres)</p>
+                
+                <div className="space-y-2 p-4 bg-white/10 backdrop-blur-sm rounded-xl">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-emerald-400 rounded-full" />
+                    <p className="font-bold text-sm">Seed Capital</p>
                   </div>
+                  <p className="text-xs text-gray-300 ml-4">Jalna, Maharashtra (16 acres)</p>
                 </div>
               </CardContent>
             </Card>

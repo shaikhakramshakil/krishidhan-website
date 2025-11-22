@@ -43,11 +43,14 @@ export function Header() {
   const [isOpen, setIsOpen] = React.useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
-        <div className="mr-4 hidden md:flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="hidden font-bold sm:inline-block text-xl text-green-700">
+    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-lg supports-[backdrop-filter]:bg-white/80 shadow-sm">
+      <div className="container flex h-20 items-center justify-between px-4 md:px-8">
+        <div className="mr-4 hidden md:flex items-center gap-8">
+          <Link href="/" className="flex items-center space-x-2">
+            <div className="w-10 h-10 bg-gradient-to-br from-green-600 to-emerald-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
+              K
+            </div>
+            <span className="hidden font-extrabold sm:inline-block text-2xl bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
               KRISHIDHAN
             </span>
           </Link>
@@ -55,22 +58,22 @@ export function Header() {
             <NavigationMenuList>
               <NavigationMenuItem>
                 <Link href="/" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-semibold text-gray-700 hover:text-green-600")}>
                     Home
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/about" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-semibold text-gray-700 hover:text-green-600")}>
                     About Us
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="font-semibold text-gray-700 hover:text-green-600">Products</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                  <ul className="grid w-[400px] gap-3 p-6 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                     {components.map((component) => (
                       <ListItem
                         key={component.title}
@@ -88,14 +91,14 @@ export function Header() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/research" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-semibold text-gray-700 hover:text-green-600")}>
                     R&D
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/contact" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-semibold text-gray-700 hover:text-green-600")}>
                     Contact
                   </NavigationMenuLink>
                 </Link>
@@ -106,44 +109,44 @@ export function Header() {
         
         {/* Mobile Menu */}
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-          <div className="w-full flex-1 md:w-auto md:flex-none">
-            {/* Search placeholder */}
-          </div>
+          <Link href="/" className="flex md:hidden items-center space-x-2">
+            <div className="w-10 h-10 bg-gradient-to-br from-green-600 to-emerald-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
+              K
+            </div>
+            <span className="font-extrabold text-xl bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+              KRISHIDHAN
+            </span>
+          </Link>
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button
                 variant="ghost"
-                className="px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+                className="px-3 text-base hover:bg-green-50 md:hidden rounded-xl"
               >
-                <Menu className="h-6 w-6" />
+                <Menu className="h-6 w-6 text-green-600" />
                 <span className="sr-only">Toggle Menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="pr-0">
-              <div className="px-7">
+            <SheetContent side="left" className="pr-0 w-80">
+              <div className="px-6">
                 <Link
                   href="/"
-                  className="flex items-center"
+                  className="flex items-center gap-3"
                   onClick={() => setIsOpen(false)}
                 >
-                  <span className="font-bold text-xl text-green-700">KRISHIDHAN</span>
+                  <div className="w-10 h-10 bg-gradient-to-br from-green-600 to-emerald-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                    K
+                  </div>
+                  <span className="font-extrabold text-xl bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                    KRISHIDHAN
+                  </span>
                 </Link>
               </div>
-              <div className="flex flex-col gap-4 mt-8 px-7">
-                  <Link href="/" onClick={() => setIsOpen(false)} className="text-lg font-medium">Home</Link>
-                  <Link href="/about" onClick={() => setIsOpen(false)} className="text-lg font-medium">About Us</Link>
-                  <Link href="/products" onClick={() => setIsOpen(false)} className="text-lg font-medium">Products</Link>
-                  <Link href="/research" onClick={() => setIsOpen(false)} className="text-lg font-medium">R&D</Link>
-                  <Link href="/contact" onClick={() => setIsOpen(false)} className="text-lg font-medium">Contact</Link>
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
-      </div>
-    </header>
-  )
-}
-
+              <div className="flex flex-col gap-2 mt-8 px-6">
+                  <Link href="/" onClick={() => setIsOpen(false)} className="text-base font-semibold text-gray-700 hover:text-green-600 hover:bg-green-50 p-3 rounded-xl transition-colors">Home</Link>
+                  <Link href="/about" onClick={() => setIsOpen(false)} className="text-base font-semibold text-gray-700 hover:text-green-600 hover:bg-green-50 p-3 rounded-xl transition-colors">About Us</Link>
+                  <Link href="/products" onClick={() => setIsOpen(false)} className="text-base font-semibold text-gray-700 hover:text-green-600 hover:bg-green-50 p-3 rounded-xl transition-colors">Products</Link>
+                  <Link href="/research" onClick={() => setIsOpen(false)} className="text-base font-semibold text-gray-700 hover:text-green-600 hover:bg-green-50 p-3 rounded-xl transition-colors">R&D</Link>
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a">
@@ -154,11 +157,21 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none space-y-1 rounded-2xl p-4 leading-none no-underline outline-none transition-all hover:bg-green-50 hover:shadow-md border border-transparent hover:border-green-200",
             className
           )}
           {...props}
         >
+          <div className="text-sm font-bold leading-none text-gray-900">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-gray-600">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  )
+})
+ListItem.displayName = "ListItem"
           <div className="text-sm font-medium leading-none">{title}</div>
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}

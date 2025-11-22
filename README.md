@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Krishidhan Seeds Website
+
+A modern, professional website for Krishidhan Seeds Pvt. Ltd., built with Next.js 15, Tailwind CSS, and Shadcn UI.
+
+## Project Overview
+
+This project is a redesign of the Krishidhan Seeds website, focusing on a clean, sleek, and modern user interface. It showcases the company's products, research, and corporate information.
+
+## Tech Stack
+
+- **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **UI Components:** [shadcn/ui](https://ui.shadcn.com/)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
 
 ## Getting Started
 
-First, run the development server:
+1.  **Clone the repository:**
+    ```bash
+    git clone <repository-url>
+    cd krishidhan
+    ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4.  **Open the application:**
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+- `app/`: Contains the application routes and pages.
+- `components/`: Reusable UI components.
+    - `ui/`: Shadcn UI primitive components.
+    - `home/`: Components specific to the home page.
+    - `layout/`: Global layout components (Header, Footer).
+- `lib/`: Utility functions and data parsing logic.
+- `data/`: Static data files (JSON).
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Dynamic Product Catalog:** Browse products by category (Cotton, Paddy, Soybean, etc.).
+- **Responsive Design:** Fully optimized for mobile, tablet, and desktop devices.
+- **Modern UI:** Clean typography, whitespace, and brand-aligned colors (Deep Green & Gold).
+- **Fast Performance:** Leverages Next.js server-side rendering and optimization.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[MIT](LICENSE)
