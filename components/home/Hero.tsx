@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-green-50 w-full">
+    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-emerald-50 w-full">
       {/* Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-20 w-72 h-72 bg-green-200/30 rounded-full blur-3xl animate-pulse" />
@@ -30,7 +30,7 @@ export default function Hero() {
             </div>
 
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-tight">
-              <span className="bg-gradient-to-r from-green-600 via-emerald-600 to-green-700 bg-clip-text text-transparent">
+              <span className="text-green-700">
                 Seeds for
               </span>
               <br />
@@ -42,9 +42,9 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-lg shadow-green-500/30 rounded-2xl px-8 h-14 text-lg font-semibold">
+              <Button asChild size="lg" className="bg-green-600 hover:bg-green-700 text-white shadow-lg shadow-green-500/30 rounded-2xl px-8 h-14 text-lg font-semibold">
                 <Link href="/products" className="inline-flex items-center gap-2">
-                  Explore Products 
+                  Explore Products
                   <ArrowRight className="w-6 h-6" />
                 </Link>
               </Button>
@@ -87,7 +87,7 @@ export default function Hero() {
           >
             <div className="relative w-full aspect-square">
               {/* Main Card */}
-              <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-emerald-600 rounded-[3rem] shadow-2xl shadow-green-500/40 transform rotate-3 overflow-hidden">
+              <div className="absolute inset-0 bg-green-600 rounded-[3rem] shadow-2xl shadow-green-500/40 transform rotate-3 overflow-hidden">
                 <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=500&h=500&fit=crop" alt="Premium Seeds" className="absolute inset-0 w-full h-full object-cover" />
               </div>
 
@@ -95,7 +95,7 @@ export default function Hero() {
               <motion.div
                 animate={{ y: [0, -20, 0] }}
                 transition={{ duration: 4, repeat: Infinity }}
-                className="absolute -top-8 -right-8 w-48 h-48 bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl shadow-xl p-6 flex flex-col justify-center items-center border-0"
+                className="absolute -top-8 -right-8 w-48 h-48 bg-orange-500 rounded-3xl shadow-xl p-6 flex flex-col justify-center items-center border-0"
               >
                 <div className="w-16 h-16 bg-white/20 rounded-2xl mb-3 flex items-center justify-center text-white font-bold text-2xl">
                   <Award className="w-8 h-8" />
@@ -109,7 +109,7 @@ export default function Hero() {
               <motion.div
                 animate={{ y: [0, 20, 0] }}
                 transition={{ duration: 5, repeat: Infinity }}
-                className="absolute -bottom-8 -left-8 w-56 h-40 bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl shadow-xl p-6 border-0"
+                className="absolute -bottom-8 -left-8 w-56 h-40 bg-green-600 rounded-3xl shadow-xl p-6 border-0"
               >
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">

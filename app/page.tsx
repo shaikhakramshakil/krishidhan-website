@@ -27,7 +27,7 @@ export default function Home() {
                 </Badge>
                 <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 mb-6 leading-tight">
                   Pioneering Agricultural{" "}
-                  <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                  <span className="text-green-600">
                     Biotechnology
                   </span>
                 </h2>
@@ -43,8 +43,8 @@ export default function Home() {
                   { icon: TrendingUp, label: "High Quality Seeds", color: "green" },
                   { icon: Users2, label: "Pan-India Presence", color: "emerald" },
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-3 p-4 rounded-2xl bg-gradient-to-br from-gray-50 to-green-50/50 border border-green-100">
-                    <div className={`p-2 rounded-xl bg-gradient-to-br from-${item.color}-400 to-${item.color}-600 text-white`}>
+                  <div key={idx} className="flex items-center gap-3 p-4 rounded-2xl bg-gray-50 border border-green-100">
+                    <div className={`p-2 rounded-xl bg-${item.color}-600 text-white`}>
                       <item.icon className="w-5 h-5" />
                     </div>
                     <span className="font-semibold text-gray-900 text-base">{item.label}</span>
@@ -52,7 +52,7 @@ export default function Home() {
                 ))}
               </div>
 
-              <Button asChild size="lg" className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-lg shadow-green-500/30 rounded-2xl px-8 h-12">
+              <Button asChild size="lg" className="bg-green-600 hover:bg-green-700 text-white shadow-lg shadow-green-500/30 rounded-2xl px-8 h-12">
                 <Link href="/about" className="inline-flex items-center gap-2">
                   Read Our Story
                   <ArrowRight className="w-4 h-4" />
@@ -80,7 +80,7 @@ export default function Home() {
       </section>
 
       {/* Products Section */}
-      <section className="py-24 bg-gradient-to-b from-gray-50 to-white w-full overflow-x-hidden">
+      <section className="py-24 bg-gray-50 w-full overflow-x-hidden">
         <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 w-full">
           <div className="text-center mb-16 space-y-4">
             <Badge className="mb-2 px-4 py-2 bg-green-100 text-green-700 hover:bg-green-100 text-base font-semibold">
@@ -93,12 +93,12 @@ export default function Home() {
               High-yielding, disease-resistant seed varieties designed for modern farming needs
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product, index) => (
               <Card key={index} className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 rounded-3xl bg-white">
-                <div className="relative h-56 bg-gradient-to-br from-green-100 via-emerald-50 to-green-100 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10" />
+                <div className="relative h-56 bg-green-100 overflow-hidden">
+                  <div className="absolute inset-0 bg-black/40 z-10" />
                   <div className="absolute inset-0 bg-green-400/20 group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute bottom-6 left-6 z-20">
                     <div className="inline-block px-4 py-1 bg-white/90 backdrop-blur-sm rounded-full text-base font-bold text-green-700 mb-2">
@@ -121,7 +121,7 @@ export default function Home() {
               </Card>
             ))}
           </div>
-          
+
           <div className="mt-16 text-center">
             <Button asChild size="lg" variant="outline" className="border-2 border-green-600 text-green-700 hover:bg-green-50 rounded-2xl px-8 h-12 font-semibold">
               <Link href="/products">View All Products</Link>
@@ -131,7 +131,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 text-white relative overflow-hidden w-full" style={{backgroundImage: 'url(https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1200&h=600&fit=crop)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+      <section className="py-24 text-white relative overflow-hidden w-full" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1200&h=600&fit=crop)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 text-center relative z-10 w-full">
           <h2 className="text-5xl md:text-6xl font-extrabold mb-6">

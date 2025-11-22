@@ -5,15 +5,15 @@ import { CheckCircle2, Building2, Users, Target, Award, Sparkles } from "lucide-
 
 export default function AboutPage() {
   const { about } = getCompanyInfo();
-  
+
   const paragraphs = about?.paragraphs || [];
-  const vision = about?.headings.find(h => h.toLowerCase().includes('vision')) ? 
-                 paragraphs[2] : "To emerge as one of the leading technology driven Indian agri input company.";
+  const vision = about?.headings.find(h => h.toLowerCase().includes('vision')) ?
+    paragraphs[2] : "To emerge as one of the leading technology driven Indian agri input company.";
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-green-50/30 to-white w-full overflow-x-hidden">
+    <div className="min-h-screen bg-white w-full overflow-x-hidden">
       {/* Header Section */}
-      <section className="relative bg-gradient-to-br from-green-600 via-emerald-600 to-green-700 text-white py-24 md:py-32 overflow-hidden w-full">
+      <section className="relative bg-green-700 text-white py-24 md:py-32 overflow-hidden w-full">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-yellow-300 rounded-full blur-3xl" />
@@ -40,7 +40,7 @@ export default function AboutPage() {
           <div className="lg:col-span-2 space-y-10">
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-1 h-12 bg-gradient-to-b from-green-600 to-emerald-600 rounded-full" />
+                <div className="w-1 h-12 bg-green-600 rounded-full" />
                 <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">Our Journey</h2>
               </div>
               <div className="prose prose-lg max-w-none text-gray-700 space-y-6 leading-relaxed">
@@ -50,35 +50,35 @@ export default function AboutPage() {
             </div>
 
             <div className="grid gap-6 md:grid-cols-2">
-               <Card className="card-hover border-0 shadow-xl bg-gradient-to-br from-green-50 to-emerald-50 overflow-hidden relative">
-                 <div className="absolute top-0 right-0 w-32 h-32 bg-green-200/30 rounded-full blur-2xl" />
-                 <CardHeader className="relative">
-                   <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                     <Target className="h-6 w-6 text-white" />
-                   </div>
-                   <CardTitle className="text-2xl font-bold text-green-900">Our Vision</CardTitle>
-                 </CardHeader>
-                 <CardContent className="relative">
-                   <p className="text-base text-gray-700 leading-relaxed">
-                     {vision}
-                   </p>
-                 </CardContent>
-               </Card>
-               
-               <Card className="card-hover border-0 shadow-xl bg-gradient-to-br from-yellow-50 to-orange-50 overflow-hidden relative">
-                 <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-200/30 rounded-full blur-2xl" />
-                 <CardHeader className="relative">
-                   <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                     <Users className="h-6 w-6 text-white" />
-                   </div>
-                   <CardTitle className="text-2xl font-bold text-yellow-900">Our Mission</CardTitle>
-                 </CardHeader>
-                 <CardContent className="relative">
-                   <p className="text-base text-gray-700 leading-relaxed">
-                     To provide access to latest technologies and all required quality agri inputs for the social economic growth of farmers.
-                   </p>
-                 </CardContent>
-               </Card>
+              <Card className="card-hover border-0 shadow-xl bg-green-50 overflow-hidden relative">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-green-200/30 rounded-full blur-2xl" />
+                <CardHeader className="relative">
+                  <div className="w-12 h-12 bg-green-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                    <Target className="h-6 w-6 text-white" />
+                  </div>
+                  <CardTitle className="text-2xl font-bold text-green-900">Our Vision</CardTitle>
+                </CardHeader>
+                <CardContent className="relative">
+                  <p className="text-base text-gray-700 leading-relaxed">
+                    {vision}
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="card-hover border-0 shadow-xl bg-yellow-50 overflow-hidden relative">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-200/30 rounded-full blur-2xl" />
+                <CardHeader className="relative">
+                  <div className="w-12 h-12 bg-yellow-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                    <Users className="h-6 w-6 text-white" />
+                  </div>
+                  <CardTitle className="text-2xl font-bold text-yellow-900">Our Mission</CardTitle>
+                </CardHeader>
+                <CardContent className="relative">
+                  <p className="text-base text-gray-700 leading-relaxed">
+                    To provide access to latest technologies and all required quality agri inputs for the social economic growth of farmers.
+                  </p>
+                </CardContent>
+              </Card>
             </div>
           </div>
 
@@ -87,7 +87,7 @@ export default function AboutPage() {
             <Card className="border-0 shadow-xl bg-white">
               <CardHeader>
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
+                  <div className="w-10 h-10 bg-green-600 rounded-xl flex items-center justify-center">
                     <Award className="h-5 w-5 text-white" />
                   </div>
                   <CardTitle className="text-xl font-bold">Key Highlights</CardTitle>
@@ -111,7 +111,7 @@ export default function AboutPage() {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-xl bg-gradient-to-br from-gray-900 to-gray-800 text-white overflow-hidden relative">
+            <Card className="border-0 shadow-xl bg-gray-900 text-white overflow-hidden relative">
               <div className="absolute inset-0 opacity-10">
                 <div className="absolute top-0 right-0 w-40 h-40 bg-white rounded-full blur-2xl" />
               </div>
@@ -131,7 +131,7 @@ export default function AboutPage() {
                   </div>
                   <p className="text-xs text-gray-300 ml-4">Pune, Maharashtra</p>
                 </div>
-                
+
                 <div className="space-y-2 p-4 bg-white/10 backdrop-blur-sm rounded-xl">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-yellow-400 rounded-full" />
@@ -139,7 +139,7 @@ export default function AboutPage() {
                   </div>
                   <p className="text-xs text-gray-300 ml-4">Indore, Madhya Pradesh</p>
                 </div>
-                
+
                 <div className="space-y-2 p-4 bg-white/10 backdrop-blur-sm rounded-xl">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-emerald-400 rounded-full" />
