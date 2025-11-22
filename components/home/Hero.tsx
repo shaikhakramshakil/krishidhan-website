@@ -24,12 +24,12 @@ export default function Hero() {
             transition={{ duration: 0.7 }}
             className="space-y-8"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 text-green-700 text-sm font-medium">
-              <Sparkles className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 text-green-700 text-base font-medium">
+              <Sparkles className="w-5 h-5" />
               <span>Leading Agri-Tech Innovation Since 1996</span>
             </div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight">
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-tight">
               <span className="bg-gradient-to-r from-green-600 via-emerald-600 to-green-700 bg-clip-text text-transparent">
                 Seeds for
               </span>
@@ -37,18 +37,18 @@ export default function Hero() {
               <span className="text-gray-900">Tomorrow's Harvest</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl">
+            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-xl">
               Empowering Indian farmers with premium quality seeds, cutting-edge research, and sustainable agricultural solutions for a prosperous future.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-lg shadow-green-500/30 rounded-2xl px-8 h-14 text-base font-semibold">
+              <Button asChild size="lg" className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-lg shadow-green-500/30 rounded-2xl px-8 h-14 text-lg font-semibold">
                 <Link href="/products" className="inline-flex items-center gap-2">
                   Explore Products 
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowRight className="w-6 h-6" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-2 border-green-600 text-green-700 hover:bg-green-50 rounded-2xl px-8 h-14 text-base font-semibold">
+              <Button asChild variant="outline" size="lg" className="border-2 border-green-600 text-green-700 hover:bg-green-50 rounded-2xl px-8 h-14 text-lg font-semibold">
                 <Link href="/about">
                   Our Story
                 </Link>
@@ -69,10 +69,10 @@ export default function Hero() {
               ].map((stat, index) => (
                 <div key={index} className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <stat.icon className="w-5 h-5 text-green-600" />
-                    <div className="text-2xl md:text-3xl font-bold text-gray-900">{stat.value}</div>
+                    <stat.icon className="w-6 h-6 text-green-600" />
+                    <div className="text-3xl md:text-4xl font-bold text-gray-900">{stat.value}</div>
                   </div>
-                  <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+                  <div className="text-base text-gray-600 font-medium">{stat.label}</div>
                 </div>
               ))}
             </motion.div>
@@ -101,8 +101,8 @@ export default function Hero() {
                   <Award className="w-8 h-8" />
                 </div>
                 <div className="text-center">
-                  <div className="font-bold text-white text-lg">Top 10</div>
-                  <div className="text-sm text-white/80">Seed Company</div>
+                  <div className="font-bold text-white text-xl">Top 10</div>
+                  <div className="text-base text-white/80">Seed Company</div>
                 </div>
               </motion.div>
 
@@ -116,8 +116,8 @@ export default function Hero() {
                     <Sprout className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-white">93K+</div>
-                    <div className="text-xs text-white/80">Acres Production</div>
+                    <div className="text-3xl font-bold text-white">93K+</div>
+                    <div className="text-sm text-white/80">Acres Production</div>
                   </div>
                 </div>
                 <div className="flex gap-1 mt-3">

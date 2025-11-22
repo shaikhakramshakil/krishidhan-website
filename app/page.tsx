@@ -22,16 +22,16 @@ export default function Home() {
           <div className="grid gap-16 lg:grid-cols-2 items-center">
             <div className="space-y-8">
               <div>
-                <Badge className="mb-4 px-4 py-2 bg-green-100 text-green-700 hover:bg-green-100 text-sm font-semibold">
+                <Badge className="mb-4 px-4 py-2 bg-green-100 text-green-700 hover:bg-green-100 text-base font-semibold">
                   About Krishidhan
                 </Badge>
-                <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 mb-6 leading-tight">
+                <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 mb-6 leading-tight">
                   Pioneering Agricultural{" "}
                   <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
                     Biotechnology
                   </span>
                 </h2>
-                <p className="text-lg text-gray-600 leading-relaxed">
+                <p className="text-xl text-gray-600 leading-relaxed">
                   {aboutText}
                 </p>
               </div>
@@ -47,7 +47,7 @@ export default function Home() {
                     <div className={`p-2 rounded-xl bg-gradient-to-br from-${item.color}-400 to-${item.color}-600 text-white`}>
                       <item.icon className="w-5 h-5" />
                     </div>
-                    <span className="font-semibold text-gray-900 text-sm">{item.label}</span>
+                    <span className="font-semibold text-gray-900 text-base">{item.label}</span>
                   </div>
                 ))}
               </div>
@@ -66,12 +66,12 @@ export default function Home() {
                 <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&h=600&fit=crop&q=80" alt="Crop Field" className="absolute inset-0 w-full h-full object-cover" />
                 {/* Floating stats */}
                 <div className="absolute top-8 right-8 bg-white rounded-2xl p-4 shadow-xl">
-                  <div className="text-3xl font-bold text-green-600">93K+</div>
-                  <div className="text-xs text-gray-600 font-medium">Acres Production</div>
+                  <div className="text-4xl font-bold text-green-600">93K+</div>
+                  <div className="text-sm text-gray-600 font-medium">Acres Production</div>
                 </div>
                 <div className="absolute bottom-8 left-8 bg-white rounded-2xl p-4 shadow-xl">
-                  <div className="text-3xl font-bold text-emerald-600">600K+</div>
-                  <div className="text-xs text-gray-600 font-medium">Happy Farmers</div>
+                  <div className="text-4xl font-bold text-emerald-600">600K+</div>
+                  <div className="text-sm text-gray-600 font-medium">Happy Farmers</div>
                 </div>
               </div>
             </div>
@@ -83,13 +83,13 @@ export default function Home() {
       <section className="py-24 bg-gradient-to-b from-gray-50 to-white w-full overflow-x-hidden">
         <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 w-full">
           <div className="text-center mb-16 space-y-4">
-            <Badge className="mb-2 px-4 py-2 bg-green-100 text-green-700 hover:bg-green-100 text-sm font-semibold">
+            <Badge className="mb-2 px-4 py-2 bg-green-100 text-green-700 hover:bg-green-100 text-base font-semibold">
               Our Products
             </Badge>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900">
+            <h2 className="text-5xl md:text-6xl font-extrabold text-gray-900">
               Premium Seed Varieties
             </h2>
-            <p className="max-w-2xl mx-auto text-lg text-gray-600">
+            <p className="max-w-2xl mx-auto text-xl text-gray-600">
               High-yielding, disease-resistant seed varieties designed for modern farming needs
             </p>
           </div>
@@ -101,20 +101,20 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10" />
                   <div className="absolute inset-0 bg-green-400/20 group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute bottom-6 left-6 z-20">
-                    <div className="inline-block px-4 py-1 bg-white/90 backdrop-blur-sm rounded-full text-sm font-bold text-green-700 mb-2">
+                    <div className="inline-block px-4 py-1 bg-white/90 backdrop-blur-sm rounded-full text-base font-bold text-green-700 mb-2">
                       {product.items?.length || 0}+ Varieties
                     </div>
-                    <h3 className="text-3xl font-extrabold text-white">{product.category}</h3>
+                    <h3 className="text-4xl font-extrabold text-white">{product.category}</h3>
                   </div>
                 </div>
                 <CardContent className="p-6">
-                  <p className="text-gray-600 mb-4 line-clamp-2">
+                  <p className="text-lg text-gray-600 mb-4 line-clamp-2">
                     Premium quality {product.category.toLowerCase()} seeds with high yield potential and disease resistance.
                   </p>
-                  <Button asChild variant="ghost" className="p-0 h-auto text-green-700 font-bold hover:bg-transparent group/btn">
+                  <Button asChild variant="ghost" className="p-0 h-auto text-green-700 font-bold hover:bg-transparent group/btn text-base">
                     <Link href={`/products/${product.category.toLowerCase()}`} className="inline-flex items-center gap-2">
                       View Details
-                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
                     </Link>
                   </Button>
                 </CardContent>
@@ -134,16 +134,16 @@ export default function Home() {
       <section className="py-24 text-white relative overflow-hidden w-full" style={{backgroundImage: 'url(https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1200&h=600&fit=crop)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 text-center relative z-10 w-full">
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
+          <h2 className="text-5xl md:text-6xl font-extrabold mb-6">
             Ready to Grow with Us?
           </h2>
-          <p className="mx-auto max-w-2xl text-xl text-green-50 mb-10">
+          <p className="mx-auto max-w-2xl text-2xl text-green-50 mb-10">
             Join thousands of farmers who trust Krishidhan for premium seeds and agricultural excellence.
           </p>
-          <Button asChild size="lg" className="bg-white text-green-700 hover:bg-gray-100 shadow-2xl rounded-2xl px-10 h-14 text-base font-bold">
+          <Button asChild size="lg" className="bg-white text-green-700 hover:bg-gray-100 shadow-2xl rounded-2xl px-10 h-14 text-lg font-bold">
             <Link href="/contact" className="inline-flex items-center gap-2">
               Get in Touch
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-6 h-6" />
             </Link>
           </Button>
         </div>
