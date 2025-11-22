@@ -4,7 +4,27 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, CheckCircle2, Leaf, Microscope, TrendingUp, Users2 } from "lucide-react";
+
+// Map category names to local image files
+const getCategoryImage = (category: string): string => {
+  // Normalize category name to Title Case (e.g. "BAJRA" -> "Bajra")
+  const normalizedCategory = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
+
+  const imageMap: Record<string, string> = {
+    'Cotton': '/cotton.avif',
+    'Paddy': '/paddy.avif',
+    'Sorghum': '/sorghum.avif',
+    'Bajra': '/bajra.jpg',
+    'Maize': '/corn.avif',
+    'Wheat': '/wheat.avif',
+    'Mustard': '/msutard.avif',
+    'Soybean': '/soyabean.avif',
+    'Soyabean': '/soyabean.avif', // Handle alternate spelling
+  };
+  return imageMap[normalizedCategory] || '/wheat.avif';
+};
 
 export default function Home() {
   const { home } = getCompanyInfo();
@@ -96,10 +116,15 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product, index) => (
-              <Card key={index} className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 rounded-3xl bg-white">
-                <div className="relative h-56 bg-green-100 overflow-hidden">
+              <Card key={index} className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 rounded-3xl bg-white pt-0 gap-0 pb-0">
+                <div className="relative h-56 overflow-hidden">
+                  <Image
+                    src={getCategoryImage(product.category)}
+                    alt={`${product.category} seeds`}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
                   <div className="absolute inset-0 bg-black/40 z-10" />
-                  <div className="absolute inset-0 bg-green-400/20 group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute bottom-6 left-6 z-20">
                     <div className="inline-block px-4 py-1 bg-white/90 backdrop-blur-sm rounded-full text-base font-bold text-green-700 mb-2">
                       {product.items?.length || 0}+ Varieties
