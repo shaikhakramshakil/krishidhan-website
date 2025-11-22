@@ -94,20 +94,20 @@ export function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
-          <Link href="/" className="text-sm font-medium text-gray-700 hover:text-green-700 transition-colors">
+        <nav className="hidden md:flex items-center gap-10">
+          <Link href="/" className="text-base font-semibold text-gray-700 hover:text-green-700 transition-colors">
             Home
           </Link>
-          <Link href="/about" className="text-sm font-medium text-gray-700 hover:text-green-700 transition-colors">
+          <Link href="/about" className="text-base font-semibold text-gray-700 hover:text-green-700 transition-colors">
             About Us
           </Link>
-          <Link href="/products" className="text-sm font-medium text-gray-700 hover:text-green-700 transition-colors">
+          <Link href="/products" className="text-base font-semibold text-gray-700 hover:text-green-700 transition-colors">
             Products
           </Link>
-          <Link href="/research" className="text-sm font-medium text-gray-700 hover:text-green-700 transition-colors">
+          <Link href="/research" className="text-base font-semibold text-gray-700 hover:text-green-700 transition-colors">
             R&D
           </Link>
-          <Link href="/contact" className="text-sm font-medium text-gray-700 hover:text-green-700 transition-colors">
+          <Link href="/contact" className="text-base font-semibold text-gray-700 hover:text-green-700 transition-colors">
             Contact
           </Link>
         </nav>
