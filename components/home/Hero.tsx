@@ -95,35 +95,35 @@ export default function Hero() {
               <motion.div
                 animate={{ y: [0, -20, 0] }}
                 transition={{ duration: 4, repeat: Infinity }}
-                className="absolute -top-8 -right-8 w-48 h-48 bg-white rounded-3xl shadow-xl p-6 flex flex-col justify-center items-center border border-green-100"
+                className="absolute -top-8 -right-8 w-48 h-48 bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl shadow-xl p-6 flex flex-col justify-center items-center border-0"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl mb-3 flex items-center justify-center text-white font-bold text-2xl">
+                <div className="w-16 h-16 bg-white/20 rounded-2xl mb-3 flex items-center justify-center text-white font-bold text-2xl">
                   <Award className="w-8 h-8" />
                 </div>
                 <div className="text-center">
-                  <div className="font-bold text-gray-900 text-lg">Top 10</div>
-                  <div className="text-sm text-gray-600">Seed Company</div>
+                  <div className="font-bold text-white text-lg">Top 10</div>
+                  <div className="text-sm text-white/80">Seed Company</div>
                 </div>
               </motion.div>
 
               <motion.div
                 animate={{ y: [0, 20, 0] }}
                 transition={{ duration: 5, repeat: Infinity }}
-                className="absolute -bottom-8 -left-8 w-56 h-40 bg-white rounded-3xl shadow-xl p-6 border border-green-100"
+                className="absolute -bottom-8 -left-8 w-56 h-40 bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl shadow-xl p-6 border-0"
               >
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
-                    <Sprout className="w-6 h-6 text-green-600" />
+                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                    <Sprout className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-gray-900">93K+</div>
-                    <div className="text-xs text-gray-600">Acres Production</div>
+                    <div className="text-2xl font-bold text-white">93K+</div>
+                    <div className="text-xs text-white/80">Acres Production</div>
                   </div>
                 </div>
                 <div className="flex gap-1 mt-3">
                   {[...Array(5)].map((_, i) => (
-                    <div key={i} className="flex-1 h-2 bg-green-200 rounded-full">
-                      <div className="h-full bg-green-500 rounded-full" style={{ width: `${100 - i * 15}%` }} />
+                    <div key={i} className="flex-1 h-2 bg-white/30 rounded-full">
+                      <div className="h-full bg-white rounded-full" style={{ width: `${100 - i * 15}%` }} />
                     </div>
                   ))}
                 </div>
