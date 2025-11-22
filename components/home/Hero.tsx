@@ -88,7 +88,7 @@ export default function Hero() {
             <div className="relative w-full aspect-square">
               {/* Main Card */}
               <div className="absolute inset-0 bg-green-600 rounded-[3rem] shadow-2xl shadow-green-500/40 transform rotate-3 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=500&h=500&fit=crop" alt="Premium Seeds" className="absolute inset-0 w-full h-full object-cover" />
+                <img src="/group-of-companiesBanner.png" alt="Premium Seeds" className="absolute inset-0 w-full h-full object-cover" />
               </div>
 
               {/* Floating Cards */}
