@@ -71,23 +71,11 @@ export function Header() {
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="font-semibold text-gray-700 hover:text-green-600">Products</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-6 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    {components.map((component) => (
-                      <ListItem
-                        key={component.title}
-                        title={component.title}
-                        href={component.href}
-                      >
-                        {component.description}
-                      </ListItem>
-                    ))}
-                    <ListItem href="/products" title="View All Products">
-                      Explore our complete range of agricultural seeds.
-                    </ListItem>
-                  </ul>
-                </NavigationMenuContent>
+                <Link href="/products" legacyBehavior passHref>
+                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-semibold text-gray-700 hover:text-green-600")}>
+                    Products
+                  </NavigationMenuLink>
+                </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/research" legacyBehavior passHref>
