@@ -14,6 +14,9 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Krishidhan Seeds | Leading Agri-Input Company",
   description: "Krishidhan Seeds is a pioneer agricultural biotech company delivering high quality seeds for the Indian market.",
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
