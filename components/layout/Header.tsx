@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Search } from "lucide-react"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -44,9 +45,9 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-lg supports-[backdrop-filter]:bg-white/80 shadow-sm overflow-x-hidden">
-      <div className="container mx-auto flex h-24 items-center justify-between px-6 md:px-12 lg:px-20 max-w-[1400px] w-full">
-        <div className="mr-4 hidden md:flex items-center gap-8">
-          <Link href="/" className="flex items-center space-x-2">
+      <div className="container mx-auto flex h-16 items-center justify-between px-6 md:px-12 lg:px-20 max-w-[1400px] w-full gap-6">
+        <div className="mr-4 hidden md:flex items-center gap-6">
+          <Link href="/" className="flex items-center space-x-2 shrink-0">
             <div className="w-10 h-10 bg-gradient-to-br from-green-600 to-emerald-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
               K
             </div>
@@ -54,39 +55,52 @@ export function Header() {
               KRISHIDHAN
             </span>
           </Link>
+          
+          {/* Search Bar */}
+          <div className="flex-1 max-w-4xl">
+            <div className="relative flex items-center">
+              <input
+                type="text"
+                placeholder="Search seeds, products..."
+                className="w-full pl-10 pr-4 py-2.5 bg-green-50 border border-green-200 rounded-full text-sm text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+              />
+              <Search className="absolute left-3 h-4 w-4 text-gray-400 pointer-events-none" />
+            </div>
+          </div>
+
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
                 <Link href="/" legacyBehavior passHref>
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-semibold text-gray-700 hover:text-green-600")}>
+                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-semibold text-base text-gray-700 hover:text-green-600 bg-green-50 hover:bg-green-100 px-5 py-2.5 rounded-full transition-colors")}>
                     Home
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/about" legacyBehavior passHref>
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-semibold text-gray-700 hover:text-green-600")}>
+                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-semibold text-base text-gray-700 hover:text-green-600 bg-green-50 hover:bg-green-100 px-5 py-2.5 rounded-full transition-colors")}>
                     About Us
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/products" legacyBehavior passHref>
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-semibold text-gray-700 hover:text-green-600")}>
+                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-semibold text-base text-gray-700 hover:text-green-600 bg-green-50 hover:bg-green-100 px-5 py-2.5 rounded-full transition-colors")}>
                     Products
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/research" legacyBehavior passHref>
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-semibold text-gray-700 hover:text-green-600")}>
+                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-semibold text-base text-gray-700 hover:text-green-600 bg-green-50 hover:bg-green-100 px-5 py-2.5 rounded-full transition-colors")}>
                     R&D
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/contact" legacyBehavior passHref>
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-semibold text-gray-700 hover:text-green-600")}>
+                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-semibold text-base text-gray-700 hover:text-green-600 bg-green-50 hover:bg-green-100 px-5 py-2.5 rounded-full transition-colors")}>
                     Contact
                   </NavigationMenuLink>
                 </Link>
