@@ -136,11 +136,8 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-green-600 via-emerald-600 to-green-700 text-white relative overflow-hidden w-full">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-yellow-300 rounded-full blur-3xl" />
-        </div>
+      <section className="py-24 text-white relative overflow-hidden w-full" style={{backgroundImage: 'url(https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1200&h=600&fit=crop)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+        <div className="absolute inset-0 bg-black/40"></div>
         <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 text-center relative z-10 w-full">
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
             Ready to Grow with Us?

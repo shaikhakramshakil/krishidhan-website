@@ -87,14 +87,8 @@ export default function Hero() {
           >
             <div className="relative w-full aspect-square">
               {/* Main Card */}
-              <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-emerald-600 rounded-[3rem] shadow-2xl shadow-green-500/40 transform rotate-3">
-                <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-[3rem] p-12 flex flex-col justify-center items-center text-white">
-                  <div className="w-32 h-32 mb-6 bg-white/20 rounded-full flex items-center justify-center">
-                    <Sprout className="w-16 h-16" />
-                  </div>
-                  <h3 className="text-3xl font-bold mb-2">Premium Quality</h3>
-                  <p className="text-center text-green-50">High-Yielding Varieties</p>
-                </div>
+              <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-emerald-600 rounded-[3rem] shadow-2xl shadow-green-500/40 transform rotate-3 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=500&h=500&fit=crop" alt="Premium Seeds" className="absolute inset-0 w-full h-full object-cover" />
               </div>
 
               {/* Floating Cards */}
