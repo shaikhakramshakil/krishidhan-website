@@ -2,8 +2,8 @@ import Link from "next/link"
 
 export function Footer() {
   return (
-    <footer className="border-t bg-gray-50">
-      <div className="container py-10 md:py-16">
+    <footer className="border-t bg-gray-50 w-full overflow-x-hidden">
+      <div className="container mx-auto max-w-[1400px] py-10 md:py-16 px-6 md:px-12 lg:px-20 w-full">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="space-y-4">
             <h3 className="text-lg font-bold text-green-800">KRISHIDHAN</h3>

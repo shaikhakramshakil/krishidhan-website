@@ -22,7 +22,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
   return (
     <div className="min-h-screen bg-background">
       <section className="bg-green-50 dark:bg-green-950/30 py-12 md:py-16">
-        <div className="container px-4 md:px-6">
+        <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 w-full">
           <Button asChild variant="ghost" className="mb-6 pl-0 hover:bg-transparent hover:text-green-700">
             <Link href="/products" className="flex items-center gap-2 text-muted-foreground">
               <ArrowLeft className="h-4 w-4" /> Back to Products
@@ -37,7 +37,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
         </div>
       </section>
 
-      <div className="container px-4 md:px-6 py-12">
+      <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 w-full py-12">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {productCategory.items.map((item, index) => (
             <Card key={index} className="flex flex-col h-full hover:border-green-300 transition-colors">

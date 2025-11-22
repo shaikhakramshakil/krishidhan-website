@@ -28,12 +28,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-x-hidden">
       <body
-        className={`${inter.variable} ${poppins.variable} antialiased min-h-screen flex flex-col font-sans`}
+        className={`${inter.variable} ${poppins.variable} antialiased min-h-screen flex flex-col font-sans overflow-x-hidden w-full`}
       >
         <Header />
-        <main className="flex-1">
+        <main className="flex-1 w-full overflow-x-hidden">
           {children}
         </main>
         <Footer />

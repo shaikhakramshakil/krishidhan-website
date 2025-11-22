@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-green-50">
+    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-green-50 w-full">
       {/* Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-20 w-72 h-72 bg-green-200/30 rounded-full blur-3xl animate-pulse" />
@@ -15,7 +15,7 @@ export default function Hero() {
         <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-emerald-300/20 rounded-full blur-2xl" />
       </div>
 
-      <div className="container relative z-10 px-4 md:px-8 lg:px-12">
+      <div className="container mx-auto max-w-[1400px] relative z-10 px-6 md:px-12 lg:px-20 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div

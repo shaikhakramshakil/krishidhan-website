@@ -11,14 +11,14 @@ export default function AboutPage() {
                  paragraphs[2] : "To emerge as one of the leading technology driven Indian agri input company.";
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-green-50/30 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-white via-green-50/30 to-white w-full overflow-x-hidden">
       {/* Header Section */}
-      <section className="relative bg-gradient-to-br from-green-600 via-emerald-600 to-green-700 text-white py-24 md:py-32 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-green-600 via-emerald-600 to-green-700 text-white py-24 md:py-32 overflow-hidden w-full">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-yellow-300 rounded-full blur-3xl" />
         </div>
-        <div className="container px-4 md:px-8 lg:px-12 relative z-10">
+        <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 relative z-10 w-full">
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <Badge className="mb-2 px-4 py-2 bg-white/20 text-white hover:bg-white/20 text-sm font-semibold backdrop-blur-sm">
               About Us
@@ -33,7 +33,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <div className="container px-4 md:px-8 lg:px-12 py-16 space-y-20">
+      <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 py-16 space-y-20 w-full">
         {/* Main Content Grid */}
         <div className="grid gap-16 lg:grid-cols-3">
           {/* Left Column: Main Story */}

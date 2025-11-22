@@ -17,8 +17,8 @@ export default function Home() {
       <Hero />
 
       {/* About / Welcome Section */}
-      <section className="py-24 bg-white">
-        <div className="container px-4 md:px-8 lg:px-12">
+      <section className="py-24 bg-white w-full overflow-x-hidden">
+        <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 w-full">
           <div className="grid gap-16 lg:grid-cols-2 items-center">
             <div className="space-y-8">
               <div>
@@ -85,8 +85,8 @@ export default function Home() {
       </section>
 
       {/* Products Section */}
-      <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container px-4 md:px-8 lg:px-12">
+      <section className="py-24 bg-gradient-to-b from-gray-50 to-white w-full overflow-x-hidden">
+        <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 w-full">
           <div className="text-center mb-16 space-y-4">
             <Badge className="mb-2 px-4 py-2 bg-green-100 text-green-700 hover:bg-green-100 text-sm font-semibold">
               Our Products
@@ -136,12 +136,12 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-green-600 via-emerald-600 to-green-700 text-white relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-green-600 via-emerald-600 to-green-700 text-white relative overflow-hidden w-full">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-yellow-300 rounded-full blur-3xl" />
         </div>
-        <div className="container px-4 md:px-8 lg:px-12 text-center relative z-10">
+        <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 text-center relative z-10 w-full">
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
             Ready to Grow with Us?
           </h2>

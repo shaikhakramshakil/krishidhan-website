@@ -43,8 +43,8 @@ export function Header() {
   const [isOpen, setIsOpen] = React.useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-lg supports-[backdrop-filter]:bg-white/80 shadow-sm">
-      <div className="container flex h-20 items-center justify-between px-4 md:px-8">
+    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-lg supports-[backdrop-filter]:bg-white/80 shadow-sm overflow-x-hidden">
+      <div className="container mx-auto flex h-24 items-center justify-between px-6 md:px-12 lg:px-20 max-w-[1400px] w-full">
         <div className="mr-4 hidden md:flex items-center gap-8">
           <Link href="/" className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-gradient-to-br from-green-600 to-emerald-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
@@ -147,6 +147,16 @@ export function Header() {
                   <Link href="/about" onClick={() => setIsOpen(false)} className="text-base font-semibold text-gray-700 hover:text-green-600 hover:bg-green-50 p-3 rounded-xl transition-colors">About Us</Link>
                   <Link href="/products" onClick={() => setIsOpen(false)} className="text-base font-semibold text-gray-700 hover:text-green-600 hover:bg-green-50 p-3 rounded-xl transition-colors">Products</Link>
                   <Link href="/research" onClick={() => setIsOpen(false)} className="text-base font-semibold text-gray-700 hover:text-green-600 hover:bg-green-50 p-3 rounded-xl transition-colors">R&D</Link>
+                  <Link href="/contact" onClick={() => setIsOpen(false)} className="text-base font-semibold text-gray-700 hover:text-green-600 hover:bg-green-50 p-3 rounded-xl transition-colors">Contact</Link>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </div>
+    </header>
+  )
+}
+
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a">
@@ -164,16 +174,6 @@ const ListItem = React.forwardRef<
         >
           <div className="text-sm font-bold leading-none text-gray-900">{title}</div>
           <p className="line-clamp-2 text-sm leading-snug text-gray-600">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  )
-})
-ListItem.displayName = "ListItem"
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
         </a>

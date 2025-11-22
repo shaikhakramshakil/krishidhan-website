@@ -10,7 +10,7 @@ export default function ProductsPage() {
   return (
     <div className="min-h-screen bg-background">
       <section className="bg-green-50 dark:bg-green-950/30 py-16 md:py-24">
-        <div className="container px-4 md:px-6 text-center">
+        <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 w-full text-center">
           <h1 className="text-4xl font-bold tracking-tight text-green-900 dark:text-green-50 sm:text-5xl mb-4">
             Our Products
           </h1>
@@ -20,7 +20,7 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      <div className="container px-4 md:px-6 py-12">
+      <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 w-full py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product, index) => (
             <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-green-100 overflow-hidden">
