@@ -1,11 +1,115 @@
+"use client"
+
+import React, { useEffect, useRef, useState } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
 import { getPageData } from "@/lib/data";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Building2, Users, Target, Award, ArrowRight } from "lucide-react";
+import { Building2, Users, Target, Award, TrendingUp, Factory, Calendar } from "lucide-react";
+
+const TimelineCard = ({ experience, index, timelineColor }: any) => {
+    const cardRef = useRef(null);
+    const isInView = useInView(cardRef, { once: true, margin: "-100px" });
+    const controls = useAnimation();
+
+    useEffect(() => {
+        if (isInView) {
+            controls.start("visible");
+        }
+    }, [isInView, controls]);
+
+    const cardVariants = {
+        hidden: {
+            opacity: 0,
+            x: index % 2 === 0 ? -50 : 50,
+            y: 20
+        },
+        visible: {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: "easeOut"
+            }
+        }
+    };
+
+    const Icon = experience.icon;
+
+    return (
+        <motion.div
+            ref={cardRef}
+            variants={cardVariants}
+            initial="hidden"
+            animate={controls}
+            className={`flex items-center ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"} mb-8`}
+        >
+            <div className="w-1/2 px-4">
+                <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                    <div className="flex items-center mb-4">
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: `${experience.color}20` }}>
+                            <Icon className="h-6 w-6" style={{ color: experience.color }} />
+                        </div>
+                        <div className="ml-4">
+                            <h3 className="text-xl font-semibold text-gray-900">{experience.title}</h3>
+                            <div className="flex items-center text-gray-600">
+                                <Calendar className="mr-2 h-4 w-4" />
+                                <span>{experience.year}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="space-y-2">
+                        <p className="text-gray-700">{experience.description}</p>
+                    </div>
+
+                    {experience.highlight && (
+                        <div className="mt-4 p-3 bg-green-50 rounded-lg border border-green-100">
+                            <p className="text-green-800 font-semibold text-sm">{experience.highlight}</p>
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            <div className="w-10 flex justify-center">
+                <div
+                    className="w-5 h-5 rounded-full border-4 border-white shadow transition-colors duration-1000 ease-in-out"
+                    style={{ backgroundColor: timelineColor }}
+                />
+            </div>
+
+            <div className="w-1/2" />
+        </motion.div>
+    );
+};
 
 export default function GroupOfCompaniesPage() {
     const pageData = getPageData('group-of-companies');
     const paragraphs = pageData?.paragraphs || [];
+    const [color, setColor] = useState("rgb(22, 163, 74)"); // green-600
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const r = Math.floor(Math.random() * 100) + 20;
+            const g = Math.floor(Math.random() * 200) + 50;
+            const b = Math.floor(Math.random() * 100) + 20;
+            setColor(`rgb(${r}, ${g}, ${b})`);
+        }, 2000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    const experiences = [
+        { id: 1, year: "1980", title: "Business Ventured", description: "Ventured by Mr. J.P. Karwa & (Late) Mr. S.P. Karwa", icon: Building2, color: "#3b82f6" },
+        { id: 2, year: "1990-2000", title: "Research Centers & DSIR Recognition", description: "Established Research Centers & received DSIR Recognition from the Government of India", icon: Target, color: "#16a34a" },
+        { id: 3, year: "2004", title: "Biotech Division", description: "Established Biotech Division to advance agricultural biotechnology research", icon: Factory, color: "#9333ea" },
+        { id: 4, year: "2005", title: "Infrastructure Expansion", description: "Expanded Infrastructure to support growing operations and research activities", icon: Building2, color: "#f97316" },
+        { id: 5, year: "2007", title: "Business Diversification", description: "Diversified in Vegetable & Plant Nutrition Business to expand product portfolio", icon: TrendingUp, color: "#059669" },
+        { id: 6, year: "2008", title: "Technology Centre in Jalna", description: "Opened new Technology Centre in Jalna to enhance research capabilities", icon: Factory, color: "#06b6d4" },
+        { id: 7, year: "2009", title: "Co-marketing Venture", description: "Ventured into Co-marketing Business of R & D Products", icon: Users, color: "#ec4899" },
+        { id: 8, year: "2016-17", title: "Growth Milestone", description: "Achieved 10% market share in respective segments of Indian seed market", icon: Award, color: "#ef4444", highlight: "🏆 Recognized as one of the Top 10 Seed Companies in India" }
+    ];
 
     return (
         <div className="min-h-screen bg-white w-full overflow-x-hidden">
@@ -43,6 +147,31 @@ export default function GroupOfCompaniesPage() {
                             </p>
                         </div>
                     )}
+                </div>
+
+                {/* Timeline Section */}
+                <div className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8 -mx-6 md:-mx-12 lg:-mx-20">
+                    <div className="max-w-7xl mx-auto">
+                        <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+                            Our Journey
+                        </h2>
+
+                        <div className="relative">
+                            <div
+                                className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full transition-colors duration-1000 ease-in-out"
+                                style={{ backgroundColor: color }}
+                            />
+
+                            {experiences.map((experience, index) => (
+                                <TimelineCard
+                                    key={experience.id}
+                                    experience={experience}
+                                    index={index}
+                                    timelineColor={color}
+                                />
+                            ))}
+                        </div>
+                    </div>
                 </div>
 
                 {/* Subsidiaries Grid */}
