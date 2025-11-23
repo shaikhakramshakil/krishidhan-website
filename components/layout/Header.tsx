@@ -14,8 +14,11 @@ export function Header() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
+    { name: "Group", href: "/group-of-companies" },
+    { name: "Infrastructure", href: "/infrastructure" },
     { name: "Products", href: "/products" },
     { name: "R&D", href: "/research" },
+    { name: "Career", href: "/career" },
   ]
 
   return (

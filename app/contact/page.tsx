@@ -1,124 +1,107 @@
-"use client"
-
-import { getCompanyInfo } from "@/lib/data";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { MapPin, Phone, Mail, Send } from "lucide-react";
+import { getPageData } from "@/lib/data";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
 export default function ContactPage() {
-  const { contact } = getCompanyInfo();
-  const paragraphs = contact?.paragraphs || [];
+  const pageData = getPageData('contact');
+  const paragraphs = pageData?.paragraphs || [];
 
-  // Helper to parse address strings
-  const parseAddress = (text: string) => {
-    // Simple heuristic to split phone/fax from address
-    const parts = text.split(/Phone:|Fax:/);
-    return {
-      address: parts[0],
-      phone: parts.length > 1 ? parts[1].split('Fax:')[0].trim() : null
-    };
+  // Helper to parse contact info
+  const parseContact = (text: string) => {
+    // Simple parsing logic based on the text format
+    const parts = text.split(/Phone:|Fax:|Phone No:/);
+    const address = parts[0]?.trim();
+    const phone = parts[1]?.trim().replace(',', '');
+    const fax = parts[2]?.trim();
+    return { address, phone, fax };
   };
 
-  const offices = [
-    { title: "Registered Office", ...parseAddress(paragraphs[0] || "") },
-    { title: "Operational Office", ...parseAddress(paragraphs[1] || "") },
-    { title: "Corporate Office", ...parseAddress(paragraphs[2] || "") },
-  ];
+  const offices = paragraphs.slice(0, 4).map((p, i) => {
+    const { address, phone, fax } = parseContact(p);
+    let title = "Office";
+    if (i === 0) title = "Registered Office (Indore)";
+    if (i === 1) title = "Seed Capital (Jalna)";
+    if (i === 2) title = "Corporate Office (Pune)";
+    if (i === 3) title = "Pune Office 2";
+
+    return { title, address, phone, fax };
+  });
 
   return (
-    <div className="min-h-screen bg-background">
-      <section className="bg-green-50 dark:bg-green-950/30 py-16 md:py-24">
-        <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 w-full text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-green-900 dark:text-green-50 sm:text-5xl mb-6">
-            Contact Us
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Have questions about our products or want to partner with us? Reach out to our team.
-          </p>
+    <div className="min-h-screen bg-white w-full overflow-x-hidden">
+      {/* Header Section */}
+      <section className="relative bg-gray-900 text-white py-24 md:py-32 overflow-hidden w-full">
+        <div className="absolute inset-0 opacity-30">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=600&fit=crop" alt="Office" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-transparent" />
+        <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 relative z-10 w-full">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <Badge className="mb-2 px-4 py-2 bg-white/20 text-white hover:bg-white/20 text-sm font-semibold backdrop-blur-sm border border-white/20">
+              Get in Touch
+            </Badge>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
+              Contact Us
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+              We are here to assist you. Reach out to our offices across India.
+            </p>
+          </div>
         </div>
       </section>
 
-      <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 w-full py-12">
-        <div className="grid gap-12 lg:grid-cols-2">
-          {/* Contact Form */}
-          <div className="space-y-8">
-            <div>
-              <h2 className="text-2xl font-bold text-green-800 mb-2">Send us a Message</h2>
-              <p className="text-muted-foreground">Fill out the form below and we'll get back to you shortly.</p>
-            </div>
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium">Name</label>
-                  <Input id="name" placeholder="Your Name" />
+      <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 py-16 space-y-20 w-full">
+
+        <div className="grid gap-8 md:grid-cols-2">
+          {offices.map((office, idx) => (
+            <Card key={idx} className="border-0 shadow-lg hover:shadow-xl transition-shadow bg-white group">
+              <CardContent className="p-8 space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center group-hover:bg-green-600 transition-colors duration-300">
+                    <MapPin className="w-6 h-6 text-green-700 group-hover:text-white transition-colors" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900">{office.title}</h3>
                 </div>
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium">Email</label>
-                  <Input id="email" type="email" placeholder="your@email.com" />
+
+                <div className="space-y-4 pl-16">
+                  <p className="text-gray-600 leading-relaxed">
+                    {office.address}
+                  </p>
+
+                  {office.phone && (
+                    <div className="flex items-center gap-3 text-gray-700">
+                      <Phone className="w-4 h-4 text-green-600" />
+                      <span className="font-medium">{office.phone}</span>
+                    </div>
+                  )}
+
+                  {office.fax && (
+                    <div className="flex items-center gap-3 text-gray-700">
+                      <Clock className="w-4 h-4 text-gray-400" />
+                      <span className="text-sm">Fax: {office.fax}</span>
+                    </div>
+                  )}
                 </div>
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="subject" className="text-sm font-medium">Subject</label>
-                <Input id="subject" placeholder="Inquiry about..." />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium">Message</label>
-                <Textarea id="message" placeholder="How can we help you?" className="min-h-[150px]" />
-              </div>
-              <Button type="submit" className="w-full bg-green-700 hover:bg-green-800">
-                <Send className="mr-2 h-4 w-4" /> Send Message
-              </Button>
-            </form>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Email Section */}
+        <div className="bg-green-900 rounded-3xl p-8 md:p-12 text-white text-center">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 mb-6">
+            <Mail className="w-8 h-8 text-white" />
           </div>
-
-          {/* Contact Info */}
-          <div className="space-y-8">
-            <div>
-              <h2 className="text-2xl font-bold text-green-800 mb-6">Our Offices</h2>
-              <div className="grid gap-6">
-                {offices.map((office, index) => (
-                  <Card key={index} className="border-l-4 border-l-green-600">
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-lg font-semibold">{office.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-3 text-sm">
-                      <div className="flex items-start gap-3">
-                        <MapPin className="h-4 w-4 text-muted-foreground mt-1 shrink-0" />
-                        <p className="text-muted-foreground">{office.address}</p>
-                      </div>
-                      {office.phone && (
-                        <div className="flex items-center gap-3">
-                          <Phone className="h-4 w-4 text-muted-foreground shrink-0" />
-                          <p className="text-muted-foreground">{office.phone}</p>
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-
-            <div className="p-6 bg-green-50 rounded-lg border border-green-100">
-              <h3 className="font-semibold text-green-900 mb-4 flex items-center gap-2">
-                <Mail className="h-5 w-5" /> Direct Email
-              </h3>
-              <div className="space-y-2 text-sm">
-                <p className="flex justify-between">
-                  <span className="text-muted-foreground">General Inquiry:</span>
-                  <a href="mailto:info@krishidhanseeds.com" className="font-medium text-green-700 hover:underline">info@krishidhanseeds.com</a>
-                </p>
-                <p className="flex justify-between">
-                  <span className="text-muted-foreground">Customer Care:</span>
-                  <a href="mailto:customercare@krishidhanseeds.com" className="font-medium text-green-700 hover:underline">customercare@krishidhanseeds.com</a>
-                </p>
-                <p className="flex justify-between">
-                  <span className="text-muted-foreground">Careers:</span>
-                  <a href="mailto:careers@krishidhanseeds.com" className="font-medium text-green-700 hover:underline">careers@krishidhanseeds.com</a>
-                </p>
-              </div>
-            </div>
+          <h2 className="text-3xl font-bold mb-4">Email Us</h2>
+          <p className="text-green-100 mb-8 text-lg">For general inquiries and customer support</p>
+          <div className="flex flex-wrap justify-center gap-6">
+            <a href="mailto:info@krishidhanseeds.com" className="px-6 py-3 bg-white text-green-900 rounded-xl font-bold hover:bg-green-50 transition-colors">
+              info@krishidhanseeds.com
+            </a>
+            <a href="mailto:customercare@krishidhanseeds.com" className="px-6 py-3 bg-transparent border-2 border-white text-white rounded-xl font-bold hover:bg-white/10 transition-colors">
+              customercare@krishidhanseeds.com
+            </a>
           </div>
         </div>
       </div>

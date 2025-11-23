@@ -30,7 +30,7 @@ export default function Home() {
   const { home } = getCompanyInfo();
   const products = getProducts().slice(0, 6); // Get first 6 categories
 
-  const aboutText = home?.paragraphs[1] || "";
+  const aboutText = home?.paragraphs[2] || "";
 
   return (
     <div className="flex flex-col min-h-screen">
