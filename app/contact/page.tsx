@@ -74,7 +74,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white w-full overflow-x-hidden">
       {/* Header Section */}
-      <section className="relative bg-green-800 text-white py-24 md:py-32 overflow-hidden w-full">
+      <section className="relative bg-green-700 text-white py-24 md:py-32 overflow-hidden w-full">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-yellow-300 rounded-full blur-3xl" />
@@ -111,7 +111,7 @@ export default function ContactPage() {
                 <TabsTrigger
                   key={office.id}
                   value={office.id}
-                  className="data-[state=active]:bg-green-700 data-[state=active]:text-white data-[state=active]:shadow-lg py-3 px-4 text-sm font-semibold rounded-lg border-2 border-transparent data-[state=active]:border-green-800 transition-all duration-200 hover:bg-gray-200 data-[state=inactive]:text-gray-700"
+                  className="data-[state=active]:bg-green-600 data-[state=active]:text-white data-[state=active]:shadow-lg py-3 px-4 text-sm font-semibold rounded-lg border-2 border-transparent data-[state=active]:border-green-600 transition-all duration-200 hover:bg-gray-200 data-[state=inactive]:text-gray-700"
                 >
                   {office.location}
                 </TabsTrigger>
@@ -238,12 +238,12 @@ export default function ContactPage() {
                   >
                     customercare@krishidhanseeds.com
                   </a>
-                </CardContent>
-              </Card>
-            </div>
+                </CardContent >
+              </Card >
+            </div >
 
             {/* Contact Form */}
-            <Card className="md:col-span-2 border-2 border-gray-200 shadow-2xl">
+            < Card className="md:col-span-2 border-2 border-gray-200 shadow-2xl" >
               <CardHeader className="bg-white border-b-2 border-gray-100">
                 <CardTitle className="text-2xl font-bold text-gray-900">Send Us a Message</CardTitle>
                 <p className="text-gray-600 text-sm">Fill out the form below and we'll get back to you shortly</p>
@@ -310,10 +310,10 @@ export default function ContactPage() {
                   </Button>
                 </form>
               </CardContent>
-            </Card>
-          </div>
-        </div>
-      </div>
-    </div>
+            </Card >
+          </div >
+        </div >
+      </div >
+    </div >
   );
 }
