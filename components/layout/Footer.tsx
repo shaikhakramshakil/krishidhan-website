@@ -46,6 +46,34 @@ export function Footer() {
             </address>
           </div>
         </div>
+        
+        {/* Certifications & Partners Section */}
+        <div className="mt-16 pt-12 border-t border-gray-200">
+          <div className="flex flex-wrap items-center justify-center gap-12 md:gap-20 lg:gap-28">
+            <div className="hover:scale-105 transition-transform duration-300">
+              <img
+                src="/logo1.png"
+                alt="Certification Partner"
+                className="h-16 md:h-20 w-auto object-contain"
+              />
+            </div>
+            <div className="hover:scale-105 transition-transform duration-300">
+              <img
+                src="/logo2.png"
+                alt="Industry Partner"
+                className="h-16 md:h-20 w-auto object-contain"
+              />
+            </div>
+            <div className="hover:scale-105 transition-transform duration-300">
+              <img
+                src="/logo3.png"
+                alt="Association Partner"
+                className="h-16 md:h-20 w-auto object-contain"
+              />
+            </div>
+          </div>
+        </div>
+        
         <div className="mt-12 border-t pt-8 text-center text-lg text-gray-500">
           <p>© {new Date().getFullYear()} Krishidhan Seeds Pvt. Ltd. All rights reserved.</p>
         </div>

@@ -3,6 +3,8 @@
 import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
+import { motion } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -10,14 +12,16 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
 export function Header() {
   const [isOpen, setIsOpen] = React.useState(false)
+  let pathname = usePathname() || "/"
+  const [hoveredPath, setHoveredPath] = React.useState(pathname)
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
-    { name: "Group", href: "/group-of-companies" },
+    { name: "About", href: "/about" },
+    { name: "Group of Companies", href: "/group-of-companies" },
+    { name: "Research", href: "/research" },
     { name: "Infrastructure", href: "/infrastructure" },
     { name: "Products", href: "/products" },
-    { name: "R&D", href: "/research" },
     { name: "Career", href: "/career" },
   ]
 
@@ -40,16 +44,42 @@ export function Header() {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-10 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-lg font-bold text-gray-700 hover:text-green-600 transition-colors"
-            >
-              {link.name}
-            </Link>
-          ))}
+        <nav className="hidden md:flex items-center gap-2 relative">
+          {navLinks.map((link) => {
+            const isActive = link.href === pathname
+            
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={cn(
+                  "px-4 py-2 rounded-md text-lg font-bold relative no-underline duration-300 ease-in",
+                  isActive ? "text-green-600" : "text-gray-700"
+                )}
+                onMouseOver={() => setHoveredPath(link.href)}
+                onMouseLeave={() => setHoveredPath(pathname)}
+              >
+                <span>{link.name}</span>
+                {link.href === hoveredPath && (
+                  <motion.div
+                    className="absolute bottom-0 left-0 h-full bg-green-100 rounded-md -z-10"
+                    layoutId="navbar"
+                    aria-hidden="true"
+                    style={{
+                      width: "100%",
+                    }}
+                    transition={{
+                      type: "spring",
+                      bounce: 0.25,
+                      stiffness: 130,
+                      damping: 9,
+                      duration: 0.3,
+                    }}
+                  />
+                )}
+              </Link>
+            )
+          })}
         </nav>
 
         {/* Desktop Actions */}
@@ -94,16 +124,23 @@ export function Header() {
                   </Button>
                 </div>
                 <div className="flex flex-col gap-8 p-8 mt-4">
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.name}
-                      href={link.href}
-                      onClick={() => setIsOpen(false)}
-                      className="text-3xl font-bold text-gray-800 hover:text-green-600 transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  ))}
+                  {navLinks.map((link) => {
+                    const isActive = link.href === pathname
+                    
+                    return (
+                      <Link
+                        key={link.name}
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className={cn(
+                          "text-3xl font-bold transition-colors",
+                          isActive ? "text-green-600" : "text-gray-800 hover:text-green-600"
+                        )}
+                      >
+                        {link.name}
+                      </Link>
+                    )
+                  })}
                   <Link href="/contact" onClick={() => setIsOpen(false)} className="mt-4">
                     <Button className="w-full bg-green-600 text-white hover:bg-green-700 rounded-full text-xl font-bold h-14 shadow-lg">
                       Contact

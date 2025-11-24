@@ -114,11 +114,17 @@ export default function GroupOfCompaniesPage() {
     return (
         <div className="min-h-screen bg-white w-full overflow-x-hidden">
             {/* Header Section */}
-            <section className="relative bg-green-800 text-white py-24 md:py-32 overflow-hidden w-full">
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute top-0 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl" />
-                    <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-yellow-300 rounded-full blur-3xl" />
+            <section className="relative text-white py-24 md:py-32 overflow-hidden w-full">
+                {/* Background Image */}
+                <div className="absolute inset-0">
+                    <img 
+                        src="/group company.avif" 
+                        alt="Group of Companies" 
+                        className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-800/90 via-green-800/80 to-green-800/90" />
                 </div>
+                
                 <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 relative z-10 w-full">
                     <div className="max-w-4xl mx-auto text-center space-y-6">
                         <Badge className="mb-2 px-4 py-2 bg-white/20 text-white hover:bg-white/20 text-sm font-semibold backdrop-blur-sm">
@@ -205,10 +211,36 @@ export default function GroupOfCompaniesPage() {
                                 <CardTitle className="text-2xl font-bold text-gray-900">Agribusiness Subsidiary</CardTitle>
                             </div>
                         </CardHeader>
-                        <CardContent className="space-y-4">
+                        <CardContent className="space-y-6">
                             <p className="text-gray-600 leading-relaxed">
-                                {paragraphs.find(p => p.includes('subsidiary of KSPL')) || "Engaged in development of agribusiness opportunities."}
+                                {paragraphs.find(p => p.includes('subsidiary of KSPL')) || "100% subsidiary of KSPL, engaged in the development of agribusiness opportunities and marketing of agri-input products."}
                             </p>
+                            
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="p-4 bg-yellow-50 rounded-lg border border-yellow-100">
+                                    <div className="text-3xl font-bold text-yellow-700 mb-1">500+</div>
+                                    <div className="text-sm text-gray-600">Partner Farmers</div>
+                                </div>
+                                <div className="p-4 bg-yellow-50 rounded-lg border border-yellow-100">
+                                    <div className="text-3xl font-bold text-yellow-700 mb-1">15+</div>
+                                    <div className="text-sm text-gray-600">Product Lines</div>
+                                </div>
+                            </div>
+
+                            <div className="space-y-3">
+                                <div className="flex items-start gap-3">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-500 mt-2 flex-shrink-0"></div>
+                                    <p className="text-sm text-gray-600">Marketing and distribution of quality agri-input products</p>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-500 mt-2 flex-shrink-0"></div>
+                                    <p className="text-sm text-gray-600">Supply chain management and logistics solutions</p>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-500 mt-2 flex-shrink-0"></div>
+                                    <p className="text-sm text-gray-600">Farmer education and technical support programs</p>
+                                </div>
+                            </div>
                         </CardContent>
                     </Card>
                 </div>

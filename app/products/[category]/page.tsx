@@ -95,7 +95,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                 href={`/products/${category.toLowerCase()}/${varietySlug}`}
                 className="group"
               >
-                <Card className="flex flex-col overflow-hidden hover:border-green-300 hover:shadow-xl transition-all duration-300 cursor-pointer bg-white rounded-2xl border-2">
+                <Card className="flex flex-col h-full overflow-hidden hover:border-green-300 hover:shadow-xl transition-all duration-300 cursor-pointer bg-white rounded-2xl border-2">
                   {/* Image Section */}
                   <div className="relative w-full aspect-[4/3] overflow-hidden bg-white flex items-center justify-center p-6">
                     {item.image ? (
@@ -114,7 +114,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                   </div>
 
                   {/* Content Section */}
-                  <CardContent className="p-6 space-y-4 bg-gradient-to-b from-green-50/30 to-white">
+                  <CardContent className="p-6 space-y-4 bg-gradient-to-b from-green-50/30 to-white flex flex-col flex-1">
                     {/* Title */}
                     <h3 className="text-xl font-bold text-green-800 group-hover:text-green-600 transition-colors">
                       {varietyName}
@@ -135,13 +135,13 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                     </div>
 
                     {/* Description */}
-                    <p className="text-sm text-gray-600 line-clamp-3 min-h-[3.5rem]">
+                    <p className="text-sm text-gray-600 line-clamp-3 flex-1">
                       {adaptabilityField || diseaseField || "Premium quality seeds designed for optimal yield and performance."}
                     </p>
 
                     {/* Action Button */}
                     <Button 
-                      className="w-full bg-green-700 hover:bg-green-800 text-white font-semibold rounded-xl py-6 transition-colors"
+                      className="w-full bg-green-700 hover:bg-green-800 text-white font-semibold rounded-xl py-6 transition-colors mt-auto"
                     >
                       View Details
                     </Button>

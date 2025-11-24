@@ -106,23 +106,37 @@ export default function CareerPage() {
 
                 {/* Benefits Grid */}
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    {benefits.map((benefit, idx) => (
-                        <Card key={idx} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white group">
-                            <CardHeader>
-                                <div className="flex items-center gap-4 mb-2">
-                                    <div className={`w-12 h-12 rounded-xl bg-${benefit.color}-100 flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                                        <benefit.icon className={`h-6 w-6 text-${benefit.color}-700`} />
+                    {benefits.map((benefit, idx) => {
+                        const colorClasses = {
+                            blue: { bg: 'bg-blue-100', icon: 'text-blue-700', hover: 'hover:bg-blue-50', border: 'hover:border-blue-300', text: 'group-hover:text-blue-700' },
+                            green: { bg: 'bg-green-100', icon: 'text-green-700', hover: 'hover:bg-green-50', border: 'hover:border-green-300', text: 'group-hover:text-green-700' },
+                            purple: { bg: 'bg-purple-100', icon: 'text-purple-700', hover: 'hover:bg-purple-50', border: 'hover:border-purple-300', text: 'group-hover:text-purple-700' },
+                            indigo: { bg: 'bg-indigo-100', icon: 'text-indigo-700', hover: 'hover:bg-indigo-50', border: 'hover:border-indigo-300', text: 'group-hover:text-indigo-700' },
+                            red: { bg: 'bg-red-100', icon: 'text-red-700', hover: 'hover:bg-red-50', border: 'hover:border-red-300', text: 'group-hover:text-red-700' },
+                            yellow: { bg: 'bg-yellow-100', icon: 'text-yellow-700', hover: 'hover:bg-yellow-50', border: 'hover:border-yellow-300', text: 'group-hover:text-yellow-700' },
+                            orange: { bg: 'bg-orange-100', icon: 'text-orange-700', hover: 'hover:bg-orange-50', border: 'hover:border-orange-300', text: 'group-hover:text-orange-700' },
+                            pink: { bg: 'bg-pink-100', icon: 'text-pink-700', hover: 'hover:bg-pink-50', border: 'hover:border-pink-300', text: 'group-hover:text-pink-700' }
+                        };
+                        const colors = colorClasses[benefit.color as keyof typeof colorClasses];
+                        
+                        return (
+                        <Card key={idx} className={`border-2 border-gray-200 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 bg-white group cursor-pointer ${colors.border}`}>
+                            <CardHeader className="pb-4">
+                                <div className="flex items-center gap-4">
+                                    <div className={`w-14 h-14 rounded-xl ${colors.bg} flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform shadow-sm`}>
+                                        <benefit.icon className={`h-7 w-7 ${colors.icon}`} />
                                     </div>
-                                    <CardTitle className="text-xl font-bold text-gray-900">{benefit.title}</CardTitle>
+                                    <CardTitle className={`text-xl font-bold text-gray-900 transition-colors ${colors.text}`}>{benefit.title}</CardTitle>
                                 </div>
                             </CardHeader>
-                            <CardContent>
+                            <CardContent className={`pt-0 p-6 rounded-xl transition-all duration-300 ${colors.hover}`}>
                                 <p className="text-gray-600 leading-relaxed">
                                     {benefit.content}
                                 </p>
                             </CardContent>
                         </Card>
-                    ))}
+                        );
+                    })}
                 </div>
 
                 {/* CTA */}

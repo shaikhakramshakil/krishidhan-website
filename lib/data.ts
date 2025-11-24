@@ -268,6 +268,42 @@ export const getProducts = () => {
         if (category === 'Cotton' && varietyNames[index] === 'KDCHB 407 (Talam 4072)') {
           details['image'] = '/talam.jpg';
         }
+        if (category === 'Sorghum' && varietyNames[index] === 'KDSFH 712 HY.FODDER SORGHUM SHUBHRA') {
+          details['image'] = '/KDSFH 712 HY.FODDER SORGHUM SHUBHRA.jpg';
+        }
+        if (category === 'Sorghum' && varietyNames[index] === 'KDSFH 727 HY.FODDER SORGHUM AMUL') {
+          details['image'] = '/KDSFH 727 HY.FODDER SORGHUM AMUL.jpg';
+        }
+        if (category === 'Sorghum' && varietyNames[index] === 'KDSFH 2712 HY.FODDER SORGHUM NEW RED') {
+          details['image'] = '/KDSFH 2712 HY.FODDER SORGHUM NEW RED.jpg';
+        }
+        if (category === 'Paddy' && varietyNames[index] === 'KOMAL 101') {
+          details['image'] = '/KOMAL 101.jpg';
+        }
+        if (category === 'Paddy' && varietyNames[index] === 'SILKY 277') {
+          details['image'] = '/paddy_277.jpg';
+        }
+        if (category === 'Paddy' && varietyNames[index] === 'PRASANNA') {
+          details['image'] = '/paddy_prasanna.jpg';
+        }
+        if (category === 'Bajra' && varietyNames[index] === 'SUJLAM 68') {
+          details['image'] = '/SUJLAM 68.jpg';
+        }
+        if (category === 'Bajra' && varietyNames[index] === 'SOLID 78') {
+          details['image'] = '/solid 78.jpg';
+        }
+        if (category === 'Bajra' && varietyNames[index] === 'BAJRA 12 KM 11') {
+          details['image'] = '/BAJRA 12 KM 11.jpg';
+        }
+        if (category === 'Maize' && varietyNames[index] === 'NARENDRA M909') {
+          details['image'] = '/NARENDRA M909.jpg';
+        }
+        if (category === 'Maize' && varietyNames[index] === 'KDMH-017(Indra)') {
+          details['image'] = '/KDMH-017(Indra).jpg';
+        }
+        if (category === 'Maize' && varietyNames[index] === 'Super Maharaja 999') {
+          details['image'] = '/Super Maharaja 999.jpg';
+        }
       }
       
       return details;

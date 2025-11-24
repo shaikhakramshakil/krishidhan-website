@@ -1,7 +1,7 @@
 import { getPageData } from "@/lib/data";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Building2, FlaskConical, Factory, Truck, CheckCircle2, ShieldCheck, Database } from "lucide-react";
+import { Building2, FlaskConical, Factory, Truck, CheckCircle2, ShieldCheck, Database, Microscope, Sprout, Warehouse, Users, Target, MapPin } from "lucide-react";
 
 export default function InfrastructurePage() {
     const pageData = getPageData('infrastructure');
@@ -14,54 +14,128 @@ export default function InfrastructurePage() {
         {
             title: "Research & Development",
             icon: FlaskConical,
-            content: findPara("main focus of Krishidhan"),
-            color: "green"
+            description: "Elite varieties and hybrids development with USPs",
+            stats: { label: "Research Farms", value: "7", subtext: "202 acres across agro-climatic zones" },
+            highlights: [
+                "DSIR recognized R&D facilities",
+                "23,000+ germplasm collection in gene bank",
+                "8 crop-specific research teams",
+                "Advanced Biotechnology Division since 2002"
+            ],
+            color: "green",
+            borderColor: "bg-green-500",
+            iconBg: "bg-green-100",
+            iconColor: "text-green-600"
         },
         {
             title: "Production",
             icon: Factory,
-            content: findPara("Production of genetically pure"),
-            color: "emerald"
+            description: "Genetically pure and quality pedigree seed production",
+            stats: { label: "Contract Farming", value: "93,600", subtext: "acres across 8 states" },
+            highlights: [
+                "SAP-assisted standardized production",
+                "600,000+ farmers benefited annually",
+                "Strict genetic purity maintenance",
+                "Multi-state production network"
+            ],
+            color: "emerald",
+            borderColor: "bg-emerald-500",
+            iconBg: "bg-emerald-100",
+            iconColor: "text-emerald-600"
         },
         {
             title: "Processing",
             icon: Building2,
-            content: findPara("Seeds received from the production"),
-            color: "blue"
+            description: "Scientific seed processing with stringent quality norms",
+            stats: { label: "Processing Steps", value: "10+", subtext: "from pre-conditioning to packaging" },
+            highlights: [
+                "Advanced colour-sorting technology",
+                "Crop-specific processing modules",
+                "Treatment, coating & pelleting facilities",
+                "Moisture and quality control systems"
+            ],
+            color: "blue",
+            borderColor: "bg-blue-500",
+            iconBg: "bg-blue-100",
+            iconColor: "text-blue-600"
         },
         {
             title: "Technology Centre",
-            icon: FlaskConical,
-            content: findPara("wide range of laboratories"),
-            color: "purple"
+            icon: Microscope,
+            description: "State-of-the-art laboratories for advanced research",
+            stats: { label: "Lab Facilities", value: "30,000", subtext: "sq.ft. biotechnology facility" },
+            highlights: [
+                "Biotech & Molecular Biology Labs",
+                "Tissue Culture & Transformation Lab",
+                "Seed Testing & Quality Analysis Lab",
+                "09 scientists (04 Doctorates, 04 Post Grads)"
+            ],
+            color: "purple",
+            borderColor: "bg-purple-500",
+            iconBg: "bg-purple-100",
+            iconColor: "text-purple-600"
         },
         {
             title: "Quality Management",
             icon: ShieldCheck,
-            content: findPara("Seed is the most vital input"),
-            color: "indigo"
+            description: "End-to-end quality control from seed to harvest",
+            stats: { label: "Annual Testing", value: "30,000", subtext: "samples in grow-out facilities" },
+            highlights: [
+                "ISTA-compliant seed testing procedures",
+                "30 ha grow-out testing across 3 locations",
+                "Pre & post-control genetic purity tests",
+                "Exceeds IMSCS standards"
+            ],
+            color: "indigo",
+            borderColor: "bg-indigo-500",
+            iconBg: "bg-indigo-100",
+            iconColor: "text-indigo-600"
         },
         {
             title: "Sales & Support",
             icon: Truck,
-            content: findPara("Sales and Distribution network"),
-            color: "orange"
+            description: "Widespread distribution network across India",
+            stats: { label: "Market Reach", value: "15", subtext: "states with 130+ professionals" },
+            highlights: [
+                "1,193 dealers/distributors network",
+                "25,000+ retailers across 30,000 villages",
+                "22,000 sq.ft. warehousing capacity",
+                "Professional C&F agent management"
+            ],
+            color: "orange",
+            borderColor: "bg-orange-500",
+            iconBg: "bg-orange-100",
+            iconColor: "text-orange-600"
         },
         {
             title: "Information Technology",
             icon: Database,
-            content: findPara("state of art Information technology"),
-            color: "cyan"
+            description: "Enterprise-grade SAP ERP with 24x7 operations",
+            stats: { label: "System", value: "SAP ECC", subtext: "6.0 EHP 7 across all operations" },
+            highlights: [
+                "No Single Point of Failure (NSPOF) architecture",
+                "VPN connectivity across all India locations",
+                "Biometric attendance & smart card system",
+                "Dual redundancy for power, servers & network"
+            ],
+            color: "cyan",
+            borderColor: "bg-cyan-500",
+            iconBg: "bg-cyan-100",
+            iconColor: "text-cyan-600"
         }
     ];
 
     return (
         <div className="min-h-screen bg-white w-full overflow-x-hidden">
             {/* Header Section */}
-            <section className="relative bg-slate-900 text-white py-24 md:py-32 overflow-hidden w-full">
-                <div className="absolute inset-0 opacity-20">
-                    {/* Abstract background pattern */}
-                    <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
+            <section className="relative text-white py-24 md:py-32 overflow-hidden w-full">
+                <div className="absolute inset-0">
+                    <img 
+                        src="/infra.avif" 
+                        alt="Infrastructure" 
+                        className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/80 to-slate-900/90" />
                 </div>
                 <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 relative z-10 w-full">
                     <div className="max-w-4xl mx-auto text-center space-y-6">
@@ -90,20 +164,36 @@ export default function InfrastructurePage() {
                 {/* Sections Grid */}
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {sections.map((section, idx) => (
-                        <Card key={idx} className={`border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 bg-white group overflow-hidden`}>
-                            <div className={`h-1.5 w-full bg-${section.color}-500`} />
-                            <CardHeader>
-                                <div className="flex items-center gap-3 mb-2">
-                                    <div className={`w-10 h-10 rounded-lg bg-${section.color}-100 flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                                        <section.icon className={`h-5 w-5 text-${section.color}-700`} />
+                        <Card key={idx} className="border-2 border-gray-200 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 bg-white group overflow-hidden rounded-xl cursor-pointer">
+                            <div className={`h-1.5 w-full ${section.borderColor}`} />
+                            <CardHeader className="pb-4">
+                                <div className="flex items-start gap-4 mb-3">
+                                    <div className={`w-14 h-14 rounded-xl ${section.iconBg} flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-transform shadow-sm`}>
+                                        <section.icon className={`h-7 w-7 ${section.iconColor}`} />
                                     </div>
-                                    <CardTitle className="text-xl font-bold text-gray-900">{section.title}</CardTitle>
+                                    <div className="flex-1">
+                                        <CardTitle className="text-xl font-bold text-gray-900 leading-tight mb-1">{section.title}</CardTitle>
+                                        <p className="text-sm text-gray-600">{section.description}</p>
+                                    </div>
+                                </div>
+                                
+                                {/* Stats Card */}
+                                <div className={`p-4 ${section.iconBg} rounded-lg border border-${section.color}-200`}>
+                                    <div className="flex items-baseline gap-2 mb-1">
+                                        <span className={`text-3xl font-bold ${section.iconColor}`}>{section.stats.value}</span>
+                                        <span className="text-sm font-semibold text-gray-700">{section.stats.label}</span>
+                                    </div>
+                                    <p className="text-xs text-gray-600">{section.stats.subtext}</p>
                                 </div>
                             </CardHeader>
-                            <CardContent>
-                                <p className="text-gray-600 text-sm leading-relaxed line-clamp-6 hover:line-clamp-none transition-all">
-                                    {section.content}
-                                </p>
+                            
+                            <CardContent className="pt-0 space-y-2">
+                                {section.highlights.map((highlight, hIdx) => (
+                                    <div key={hIdx} className="flex items-start gap-2.5">
+                                        <div className={`w-1.5 h-1.5 rounded-full ${section.borderColor} mt-1.5 flex-shrink-0`}></div>
+                                        <p className="text-sm text-gray-700 leading-relaxed">{highlight}</p>
+                                    </div>
+                                ))}
                             </CardContent>
                         </Card>
                     ))}

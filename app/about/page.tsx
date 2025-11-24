@@ -60,31 +60,31 @@ export default function AboutPage() {
             </div>
 
             <div className="grid gap-6 md:grid-cols-2">
-              <Card className="card-hover border-0 shadow-xl bg-green-50 overflow-hidden relative">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-green-200/30 rounded-full blur-2xl" />
+              <Card className="group border-2 border-green-200 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 bg-gradient-to-br from-green-50 to-green-100 overflow-hidden relative cursor-pointer">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-green-300/20 rounded-full blur-2xl" />
                 <CardHeader className="relative">
-                  <div className="w-12 h-12 bg-green-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                    <Target className="h-6 w-6 text-white" />
+                  <div className="w-14 h-14 bg-green-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform">
+                    <Target className="h-7 w-7 text-white" />
                   </div>
                   <CardTitle className="text-2xl font-bold text-green-900">Our Vision</CardTitle>
                 </CardHeader>
                 <CardContent className="relative">
-                  <p className="text-base text-gray-700 leading-relaxed">
+                  <p className="text-base text-gray-700 leading-relaxed font-medium">
                     {vision}
                   </p>
                 </CardContent>
               </Card>
 
-              <Card className="card-hover border-0 shadow-xl bg-yellow-50 overflow-hidden relative">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-200/30 rounded-full blur-2xl" />
+              <Card className="group border-2 border-yellow-200 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 bg-gradient-to-br from-yellow-50 to-yellow-100 overflow-hidden relative cursor-pointer">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-300/20 rounded-full blur-2xl" />
                 <CardHeader className="relative">
-                  <div className="w-12 h-12 bg-yellow-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                    <Users className="h-6 w-6 text-white" />
+                  <div className="w-14 h-14 bg-yellow-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform">
+                    <Users className="h-7 w-7 text-white" />
                   </div>
                   <CardTitle className="text-2xl font-bold text-yellow-900">Our Mission</CardTitle>
                 </CardHeader>
                 <CardContent className="relative">
-                  <p className="text-base text-gray-700 leading-relaxed">
+                  <p className="text-base text-gray-700 leading-relaxed font-medium">
                     To provide access to latest technologies and all required quality agri inputs for the social economic growth of farmers.
                   </p>
                 </CardContent>
@@ -94,65 +94,76 @@ export default function AboutPage() {
 
           {/* Right Column: Highlights */}
           <div className="space-y-6">
-            <Card className="border-0 shadow-xl bg-white">
+            <Card className="border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300 bg-white">
               <CardHeader>
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 bg-green-600 rounded-xl flex items-center justify-center">
-                    <Award className="h-5 w-5 text-white" />
+                  <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center shadow-sm">
+                    <Award className="h-6 w-6 text-white" />
                   </div>
                   <CardTitle className="text-xl font-bold">Key Highlights</CardTitle>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-3">
                 {[
-                  { text: "Established in 1996", icon: CheckCircle2 },
-                  { text: "DSIR Recognized R&D", icon: Sparkles },
-                  { text: "Top 10 Seed Company in India", icon: Award },
-                  { text: "Global Presence", icon: Building2 },
-                  { text: "ISO Certified Processes", icon: CheckCircle2 }
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 p-3 rounded-xl hover:bg-green-50 transition-colors">
-                    <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <item.icon className="h-4 w-4 text-green-600" />
+                  { text: "Established in 1996", icon: CheckCircle2, color: "green" },
+                  { text: "DSIR Recognized R&D", icon: Sparkles, color: "purple" },
+                  { text: "Top 10 Seed Company in India", icon: Award, color: "yellow" },
+                  { text: "Global Presence", icon: Building2, color: "blue" },
+                  { text: "ISO Certified Processes", icon: CheckCircle2, color: "emerald" }
+                ].map((item, i) => {
+                  const colorClasses = {
+                    green: { bg: "bg-green-100", icon: "text-green-600", hover: "hover:bg-green-50" },
+                    purple: { bg: "bg-purple-100", icon: "text-purple-600", hover: "hover:bg-purple-50" },
+                    yellow: { bg: "bg-yellow-100", icon: "text-yellow-600", hover: "hover:bg-yellow-50" },
+                    blue: { bg: "bg-blue-100", icon: "text-blue-600", hover: "hover:bg-blue-50" },
+                    emerald: { bg: "bg-emerald-100", icon: "text-emerald-600", hover: "hover:bg-emerald-50" }
+                  };
+                  const colors = colorClasses[item.color as keyof typeof colorClasses];
+                  
+                  return (
+                    <div key={i} className={`flex items-center gap-3 p-3 rounded-xl ${colors.hover} transition-all duration-300 cursor-pointer group`}>
+                      <div className={`w-10 h-10 ${colors.bg} rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform shadow-sm`}>
+                        <item.icon className={`h-5 w-5 ${colors.icon}`} />
+                      </div>
+                      <span className="text-sm font-semibold text-gray-900">{item.text}</span>
                     </div>
-                    <span className="text-sm font-semibold text-gray-900">{item.text}</span>
-                  </div>
-                ))}
+                  );
+                })}
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-xl bg-gray-900 text-white overflow-hidden relative">
+            <Card className="border-2 border-gray-800 shadow-lg hover:shadow-2xl transition-all duration-300 bg-gray-900 text-white overflow-hidden relative">
               <div className="absolute inset-0 opacity-10">
                 <div className="absolute top-0 right-0 w-40 h-40 bg-white rounded-full blur-2xl" />
               </div>
               <CardHeader className="relative">
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                    <Building2 className="h-5 w-5 text-white" />
+                  <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-sm">
+                    <Building2 className="h-6 w-6 text-white" />
                   </div>
                   <CardTitle className="text-xl font-bold">Infrastructure</CardTitle>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-5 relative">
-                <div className="space-y-2 p-4 bg-white/10 backdrop-blur-sm rounded-xl">
+              <CardContent className="space-y-4 relative">
+                <div className="space-y-2 p-4 bg-white/10 backdrop-blur-sm rounded-xl hover:bg-white/15 transition-all duration-300 cursor-pointer group">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-400 rounded-full" />
+                    <div className="w-2.5 h-2.5 bg-green-400 rounded-full group-hover:scale-125 transition-transform" />
                     <p className="font-bold text-sm">Corporate Office</p>
                   </div>
                   <p className="text-xs text-gray-300 ml-4">Pune, Maharashtra</p>
                 </div>
 
-                <div className="space-y-2 p-4 bg-white/10 backdrop-blur-sm rounded-xl">
+                <div className="space-y-2 p-4 bg-white/10 backdrop-blur-sm rounded-xl hover:bg-white/15 transition-all duration-300 cursor-pointer group">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-yellow-400 rounded-full" />
+                    <div className="w-2.5 h-2.5 bg-yellow-400 rounded-full group-hover:scale-125 transition-transform" />
                     <p className="font-bold text-sm">Registered Office</p>
                   </div>
                   <p className="text-xs text-gray-300 ml-4">Indore, Madhya Pradesh</p>
                 </div>
 
-                <div className="space-y-2 p-4 bg-white/10 backdrop-blur-sm rounded-xl">
+                <div className="space-y-2 p-4 bg-white/10 backdrop-blur-sm rounded-xl hover:bg-white/15 transition-all duration-300 cursor-pointer group">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-emerald-400 rounded-full" />
+                    <div className="w-2.5 h-2.5 bg-emerald-400 rounded-full group-hover:scale-125 transition-transform" />
                     <p className="font-bold text-sm">Seed Capital</p>
                   </div>
                   <p className="text-xs text-gray-300 ml-4">Jalna, Maharashtra (16 acres)</p>
