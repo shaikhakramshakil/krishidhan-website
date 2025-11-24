@@ -41,16 +41,22 @@ export default function ProductsPage({
 
   return (
     <div className="min-h-screen bg-background">
-      <section className="bg-green-50 dark:bg-green-950/30 py-16 md:py-24">
-        <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 w-full text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-green-900 dark:text-green-50 sm:text-5xl mb-4">
+      <section className="relative bg-green-50 dark:bg-green-950/30 py-16 md:py-24 overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-65 blur-sm"
+          style={{ backgroundImage: `url(https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&h=600&fit=crop&q=80)` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-green-50/60 via-green-50/50 to-green-50/60 dark:from-green-950/80 dark:via-green-950/70 dark:to-green-950/80" />
+        
+        <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 w-full text-center relative z-10">
+          <h1 className="text-4xl font-bold tracking-tight text-green-900 dark:text-green-50 sm:text-5xl mb-4 drop-shadow-md">
             {search ? `Search Results for "${search}"` : "Our Products"}
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-gray-900 dark:text-white max-w-2xl mx-auto font-bold drop-shadow-sm">
             {search
               ? `Found ${filteredProducts.length} categories matching your search.`
-              : "Explore our diverse portfolio of high-quality seeds, engineered for superior yield and resilience across various agro-climatic zones."
-            }
+              : "Explore our diverse portfolio of high-quality seeds, engineered for superior yield and resilience across various agro-climatic zones."}
           </p>
         </div>
       </section>

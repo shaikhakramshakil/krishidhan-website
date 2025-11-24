@@ -14,6 +14,16 @@ export default function AboutPage() {
     <div className="min-h-screen bg-white w-full overflow-x-hidden">
       {/* Header Section */}
       <section className="relative bg-green-700 text-white py-24 md:py-32 overflow-hidden w-full">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="/agri.jpg" 
+            alt="Agricultural Background" 
+            className="w-full h-full object-cover opacity-90"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-green-700/90 via-green-700/80 to-green-700/90" />
+        </div>
+        
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-yellow-300 rounded-full blur-3xl" />

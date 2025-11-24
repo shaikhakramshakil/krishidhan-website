@@ -15,6 +15,24 @@ function createSlug(name: string): string {
     .replace(/--+/g, '-');
 }
 
+// Map category names to local image files
+const getCategoryImage = (category: string): string => {
+  const normalizedCategory = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
+
+  const imageMap: Record<string, string> = {
+    'Cotton': '/cotton.avif',
+    'Paddy': '/paddy.avif',
+    'Sorghum': '/sorghum.avif',
+    'Bajra': '/bajra.jpg',
+    'Maize': '/corn.avif',
+    'Wheat': '/wheat.avif',
+    'Mustard': '/msutard.avif',
+    'Soybean': '/soyabean.avif',
+    'Soyabean': '/soyabean.avif',
+  };
+  return imageMap[normalizedCategory] || '/wheat.avif';
+};
+
 // This is a server component
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
   const { category } = await params;
@@ -26,20 +44,31 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
   if (!productCategory) {
     notFound();
   }
+  
+  const categoryImage = getCategoryImage(productCategory.category);
 
   return (
     <div className="min-h-screen bg-background">
-      <section className="bg-green-50 dark:bg-green-950/30 py-12 md:py-16">
-        <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 w-full">
-          <Button asChild variant="ghost" className="mb-6 pl-0 hover:bg-transparent hover:text-green-700">
-            <Link href="/products" className="flex items-center gap-2 text-muted-foreground">
-              <ArrowLeft className="h-4 w-4" /> Back to Products
-            </Link>
-          </Button>
-          <h1 className="text-4xl font-bold tracking-tight text-green-900 dark:text-green-50 sm:text-5xl capitalize mb-4">
+      <section className="relative bg-green-40 dark:bg-green-950/30 py-12 md:py-16 overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100 blur-sm"
+          style={{ backgroundImage: `url(${categoryImage})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-green-50/60 via-green-50/50 to-green-50/60 dark:from-green-950/80 dark:via-green-950/70 dark:to-green-950/80" />
+        
+        <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 w-full relative z-10">
+          <Link 
+            href="/products" 
+            className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-white/90 hover:bg-white text-green-700 hover:text-green-800 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 backdrop-blur-sm border border-green-200"
+          >
+            <ArrowLeft className="h-4 w-4" /> 
+            Back to Products
+          </Link>
+          <h1 className="text-4xl font-bold tracking-tight text-green-900 dark:text-green-50 sm:text-5xl capitalize mb-4 drop-shadow-md">
             {productCategory.category} Seeds
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-gray-900 dark:text-white font-bold drop-shadow-sm max-w-3xl">
             Discover our range of {productCategory.items.length} {productCategory.category.toLowerCase()} varieties designed for optimal performance.
           </p>
         </div>
@@ -66,79 +95,56 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                 href={`/products/${category.toLowerCase()}/${varietySlug}`}
                 className="group"
               >
-                <Card className="flex flex-col h-full hover:border-green-300 hover:shadow-lg transition-all duration-300 cursor-pointer">
-                  <CardHeader className="pb-4">
-                    <div className="flex justify-between items-start gap-3">
-                      <CardTitle className="text-xl text-green-800 group-hover:text-green-600 transition-colors flex-1">
-                        {varietyName}
-                      </CardTitle>
-                      <ArrowRight className="h-5 w-5 text-green-600 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all flex-shrink-0" />
-                    </div>
-                    {durationField && (
-                      <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 w-fit">
-                        {typeof durationField === 'string' ? durationField.split('|')[0] : durationField}
-                      </Badge>
+                <Card className="flex flex-col overflow-hidden hover:border-green-300 hover:shadow-xl transition-all duration-300 cursor-pointer bg-white rounded-2xl border-2">
+                  {/* Image Section */}
+                  <div className="relative w-full aspect-[4/3] overflow-hidden bg-white flex items-center justify-center p-6">
+                    {item.image ? (
+                      <div className="bg-white rounded-2xl p-6 w-full h-full flex items-center justify-center shadow-sm">
+                        <img 
+                          src={item.image} 
+                          alt={varietyName}
+                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <Sprout className="w-24 h-24 text-green-300" />
+                      </div>
                     )}
-                  </CardHeader>
-                  <CardContent className="flex-1">
-                    <div className="space-y-4">
-                      {/* Key Specs Grid - Always show this section */}
-                      <div className="grid grid-cols-2 gap-3 mb-4">
-                        {durationField && (
-                          <div className="flex flex-col gap-1 p-3 bg-slate-50 rounded-lg group-hover:bg-green-50 transition-colors">
-                            <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                              <Timer className="h-3 w-3" /> {item["Duration (days)"] || item.Duration || item["Days to Maturity"] ? "Duration" : "Height"}
-                            </div>
-                            <span className="text-sm font-semibold text-gray-900 line-clamp-1">
-                              {typeof durationField === 'string' ? durationField.split('|')[0] : durationField}
-                            </span>
-                          </div>
-                        )}
-                        {yieldField && (
-                          <div className="flex flex-col gap-1 p-3 bg-slate-50 rounded-lg group-hover:bg-green-50 transition-colors">
-                            <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                              <Scale className="h-3 w-3" /> Yield
-                            </div>
-                            <span className="text-sm font-semibold text-gray-900 line-clamp-1">
-                              {yieldField}
-                            </span>
-                          </div>
-                        )}
-                      </div>
+                  </div>
 
-                      {/* Key Features */}
-                      <div className="space-y-2 text-sm">
-                        {adaptabilityField && (
-                          <div className="flex gap-2">
-                            <Sprout className="h-4 w-4 text-green-600 flex-shrink-0 mt-0.5" />
-                            <div>
-                              <span className="font-medium text-gray-700">
-                                {item.Adaptability ? "Adaptability" : item["No. of Cuts"] ? "Cuts" : item["Grain quality"] ? "Grain Quality" : item.Features ? "Features" : item["Seed Colour"] ? "Seed Color" : item["Recommanded Area"] ? "Recommended Area" : "Features"}:
-                              </span>
-                              <span className="text-gray-600 ml-1 line-clamp-2">{adaptabilityField}</span>
-                            </div>
-                          </div>
-                        )}
-                        {diseaseField && (
-                          <div className="flex gap-2">
-                            <ShieldCheck className="h-4 w-4 text-green-600 flex-shrink-0 mt-0.5" />
-                            <div>
-                              <span className="font-medium text-gray-700">Protection:</span>
-                              <span className="text-gray-600 ml-1 line-clamp-2">
-                                {diseaseField}
-                              </span>
-                            </div>
-                          </div>
-                        )}
-                      </div>
+                  {/* Content Section */}
+                  <CardContent className="p-6 space-y-4 bg-gradient-to-b from-green-50/30 to-white">
+                    {/* Title */}
+                    <h3 className="text-xl font-bold text-green-800 group-hover:text-green-600 transition-colors">
+                      {varietyName}
+                    </h3>
 
-                      {/* View Details Link */}
-                      <div className="pt-4 border-t">
-                        <span className="text-sm text-green-700 font-medium group-hover:underline">
-                          View Full Details →
-                        </span>
-                      </div>
+                    {/* Badges */}
+                    <div className="flex flex-wrap gap-2">
+                      {durationField && (
+                        <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 font-medium">
+                          {typeof durationField === 'string' ? durationField.split('|')[0] : durationField}
+                        </Badge>
+                      )}
+                      {yieldField && (
+                        <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 font-medium">
+                          {yieldField}
+                        </Badge>
+                      )}
                     </div>
+
+                    {/* Description */}
+                    <p className="text-sm text-gray-600 line-clamp-3 min-h-[3.5rem]">
+                      {adaptabilityField || diseaseField || "Premium quality seeds designed for optimal yield and performance."}
+                    </p>
+
+                    {/* Action Button */}
+                    <Button 
+                      className="w-full bg-green-700 hover:bg-green-800 text-white font-semibold rounded-xl py-6 transition-colors"
+                    >
+                      View Details
+                    </Button>
                   </CardContent>
                 </Card>
               </Link>

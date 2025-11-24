@@ -251,6 +251,23 @@ export const getProducts = () => {
       // Add variety name if available
       if (varietyNames[index]) {
         details['Variety'] = varietyNames[index];
+        
+        // Add specific variety images
+        if (category === 'Cotton' && varietyNames[index] === 'KDCHB 407 (Super Fibre)') {
+          details['image'] = '/KDCHB 407 (Super Fibre).jpg';
+        }
+        if (category === 'Cotton' && varietyNames[index] === 'KDCHH 9632 (Pratik)') {
+          details['image'] = '/KDCHH 9632 (Pratik).jpg';
+        }
+        if (category === 'Cotton' && varietyNames[index] === 'KDCHH 541 (Pancham)') {
+          details['image'] = '/KDCHH 541 (Pancham).jpg';
+        }
+        if (category === 'Cotton' && varietyNames[index] === 'KDCHH 641 (Trinetra)') {
+          details['image'] = '/trinetra.jpg';
+        }
+        if (category === 'Cotton' && varietyNames[index] === 'KDCHB 407 (Talam 4072)') {
+          details['image'] = '/talam.jpg';
+        }
       }
       
       return details;
