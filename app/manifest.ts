@@ -6,6 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: 'Krishidhan',
     description: 'Leading seed company providing quality agricultural seeds and solutions for Indian farmers',
     start_url: '/',
+    scope: '/',
     display: 'standalone',
     background_color: '#ffffff',
     theme_color: '#16a34a',
@@ -46,6 +47,18 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         src: '/android-icon-192x192.png',
         sizes: '192x192',
+        type: 'image/png',
+        purpose: 'maskable',
+      },
+      {
+        src: '/ms-icon-310x310.png',
+        sizes: '310x310',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: '/ms-icon-310x310.png',
+        sizes: '310x310',
         type: 'image/png',
         purpose: 'maskable',
       },
