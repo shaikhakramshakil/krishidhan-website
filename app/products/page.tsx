@@ -35,7 +35,7 @@ export default function ProductsPage({
   const filteredProducts = search
     ? products.filter(p =>
       p.category.toLowerCase().includes(search.toLowerCase()) ||
-      p.items.some(item => item.name?.toLowerCase().includes(search.toLowerCase()))
+      p.items.some(item => (item as Record<string, string>).Variety?.toLowerCase().includes(search.toLowerCase()))
     )
     : products;
 

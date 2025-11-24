@@ -61,15 +61,15 @@ export default async function VarietyPage({
               <h1 className="text-4xl font-bold tracking-tight text-green-900 dark:text-green-50 sm:text-5xl mb-2">
                 {varietyName}
               </h1>
-              {varietyItem.Duration && (
+              {(varietyItem as any).Duration && (
                 <p className="text-lg text-muted-foreground flex items-center gap-2">
                   <Calendar className="h-5 w-5" />
-                  {varietyItem.Duration}
+                  {(varietyItem as any).Duration}
                 </p>
               )}
             </div>
             
-            {varietyItem.Yield && (
+            {(varietyItem as any).Yield && (
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border-2 border-green-200">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
@@ -77,7 +77,7 @@ export default async function VarietyPage({
                   </div>
                   <div>
                     <div className="text-sm text-muted-foreground">Expected Yield</div>
-                    <div className="text-2xl font-bold text-green-800">{varietyItem.Yield}</div>
+                    <div className="text-2xl font-bold text-green-800">{(varietyItem as any).Yield}</div>
                   </div>
                 </div>
               </div>
@@ -153,28 +153,28 @@ export default async function VarietyPage({
                 <CardTitle className="text-lg text-green-800">Quick Information</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                {varietyItem.Duration && (
+                {(varietyItem as Record<string, string>).Duration && (
                   <div className="flex justify-between items-center py-2 border-b border-green-200">
                     <span className="text-sm text-gray-600">Maturity</span>
-                    <span className="font-semibold text-gray-900">{varietyItem.Duration.split('|')[0]}</span>
+                    <span className="font-semibold text-gray-900">{(varietyItem as Record<string, string>).Duration.split('|')[0]}</span>
                   </div>
                 )}
-                {varietyItem["Boll Size"] && (
+                {(varietyItem as Record<string, string>)["Boll Size"] && (
                   <div className="flex justify-between items-center py-2 border-b border-green-200">
                     <span className="text-sm text-gray-600">Boll Size</span>
-                    <span className="font-semibold text-gray-900">{varietyItem["Boll Size"]}</span>
+                    <span className="font-semibold text-gray-900">{(varietyItem as Record<string, string>)["Boll Size"]}</span>
                   </div>
                 )}
-                {varietyItem["Plant Height (cm.)"] && (
+                {(varietyItem as Record<string, string>)["Plant Height (cm.)"] && (
                   <div className="flex justify-between items-center py-2 border-b border-green-200">
                     <span className="text-sm text-gray-600">Plant Height</span>
-                    <span className="font-semibold text-gray-900">{varietyItem["Plant Height (cm.)"]}</span>
+                    <span className="font-semibold text-gray-900">{(varietyItem as Record<string, string>)["Plant Height (cm.)"]}</span>
                   </div>
                 )}
-                {varietyItem.Adaptability && (
+                {(varietyItem as Record<string, string>).Adaptability && (
                   <div className="py-2">
                     <span className="text-sm text-gray-600">Adaptability</span>
-                    <p className="font-semibold text-gray-900 mt-1">{varietyItem.Adaptability}</p>
+                    <p className="font-semibold text-gray-900 mt-1">{(varietyItem as Record<string, string>).Adaptability}</p>
                   </div>
                 )}
               </CardContent>
@@ -197,8 +197,8 @@ export default async function VarietyPage({
                         className="block p-3 rounded-lg hover:bg-green-50 transition-colors border border-transparent hover:border-green-200"
                       >
                         <div className="font-medium text-sm text-gray-900">{item.Variety}</div>
-                        {item.Duration && (
-                          <div className="text-xs text-gray-500 mt-1">{item.Duration.split('|')[0]}</div>
+                        {(item as Record<string, string>).Duration && (
+                          <div className="text-xs text-gray-500 mt-1">{(item as Record<string, string>).Duration.split('|')[0]}</div>
                         )}
                       </Link>
                     ))}

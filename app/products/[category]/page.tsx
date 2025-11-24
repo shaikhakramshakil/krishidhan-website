@@ -77,17 +77,18 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
       <div className="container mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20 w-full py-12">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {productCategory.items.map((item, index) => {
+            const itemData = item as Record<string, string>;
             const varietySlug = createSlug(item.Variety || '');
             const varietyName = item.Variety || `${productCategory.category} Variety ${index + 1}`;
             
             // Get duration-like field (could be Duration, Duration (days), Plant height, or Days to Maturity for mustard)
-            const durationField = item.Duration || item["Duration (days)"] || item["Days to Maturity"] || item["Plant height"] || item["Plant Height (cm.)"] || item["Plant height(cm)"] || item["Plant Height in CMS"];
+            const durationField = itemData.Duration || itemData["Duration (days)"] || itemData["Days to Maturity"] || itemData["Plant height"] || itemData["Plant Height (cm.)"] || itemData["Plant height(cm)"] || itemData["Plant Height in CMS"];
             // Get yield-like field
-            const yieldField = item.Yield || item["Yield per Hactor"] || item["Yield Potential"] || item["Yield t/ha"];
+            const yieldField = itemData.Yield || itemData["Yield per Hactor"] || itemData["Yield Potential"] || itemData["Yield t/ha"];
             // Get disease/pest resistance field
-            const diseaseField = item["Disease Resistant"] || item["Reaction to Pest"] || item["Disease"];
+            const diseaseField = itemData["Disease Resistant"] || itemData["Reaction to Pest"] || itemData["Disease"];
             // Get adaptability or other special features (including mustard-specific fields)
-            const adaptabilityField = item.Adaptability || item["Other"] || item["No. of Cuts"] || item["Grain quality"] || item.Features || item["Seed Colour"] || item["Recommanded Area"];
+            const adaptabilityField = itemData.Adaptability || itemData["Other"] || itemData["No. of Cuts"] || itemData["Grain quality"] || itemData.Features || itemData["Seed Colour"] || itemData["Recommanded Area"];
             
             return (
               <Link 
@@ -98,10 +99,10 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                 <Card className="flex flex-col h-full overflow-hidden hover:border-green-300 hover:shadow-xl transition-all duration-300 cursor-pointer bg-white rounded-2xl border-2">
                   {/* Image Section */}
                   <div className="relative w-full aspect-[4/3] overflow-hidden bg-white flex items-center justify-center p-6">
-                    {item.image ? (
+                    {itemData.image ? (
                       <div className="bg-white rounded-2xl p-6 w-full h-full flex items-center justify-center shadow-sm">
                         <img 
-                          src={item.image} 
+                          src={itemData.image} 
                           alt={varietyName}
                           className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                         />
