@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { InstallBanner } from "@/components/pwa/InstallBanner";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -38,6 +39,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <InstallBanner />
         <script
           dangerouslySetInnerHTML={{
             __html: `

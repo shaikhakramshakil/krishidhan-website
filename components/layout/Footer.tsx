@@ -1,6 +1,55 @@
+"use client"
+
 import Link from "next/link"
+import { useState, useEffect } from "react"
+import { Download, Smartphone } from "lucide-react"
+
+interface BeforeInstallPromptEvent extends Event {
+  prompt: () => Promise<void>
+  userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>
+}
 
 export function Footer() {
+  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null)
+  const [isInstalled, setIsInstalled] = useState(false)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.matchMedia('(display-mode: standalone)').matches) {
+      setIsInstalled(true)
+      return
+    }
+
+    const handleBeforeInstallPrompt = (e: Event) => {
+      e.preventDefault()
+      setDeferredPrompt(e as BeforeInstallPromptEvent)
+    }
+
+    const handleAppInstalled = () => {
+      setIsInstalled(true)
+      setDeferredPrompt(null)
+    }
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
+    window.addEventListener('appinstalled', handleAppInstalled)
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
+      window.removeEventListener('appinstalled', handleAppInstalled)
+    }
+  }, [])
+
+  const handleInstallClick = async () => {
+    if (!deferredPrompt) {
+      alert('To install: Click the menu button in your browser and select "Install App" or "Add to Home Screen"')
+      return
+    }
+    await deferredPrompt.prompt()
+    const { outcome } = await deferredPrompt.userChoice
+    if (outcome === 'accepted') {
+      setIsInstalled(true)
+    }
+    setDeferredPrompt(null)
+  }
   return (
     <footer className="border-t bg-gray-50 w-full overflow-x-hidden">
       <div className="container mx-auto max-w-[1400px] py-16 md:py-20 px-6 md:px-12 lg:px-20 w-full">
@@ -74,8 +123,18 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="mt-12 border-t pt-8 text-center text-lg text-gray-500">
-          <p>© {new Date().getFullYear()} Krishidhan Seeds Pvt. Ltd. All rights reserved.</p>
+        <div className="mt-12 border-t pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-lg text-gray-500">© {new Date().getFullYear()} Krishidhan Seeds Pvt. Ltd. All rights reserved.</p>
+          
+          {!isInstalled && (
+            <button
+              onClick={handleInstallClick}
+              className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm font-medium transition-colors"
+            >
+              <Smartphone className="w-4 h-4" />
+              <span>Get our App</span>
+            </button>
+          )}
         </div>
       </div>
     </footer>

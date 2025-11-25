@@ -83,7 +83,7 @@ export function Header() {
         </nav>
 
         {/* Desktop Actions */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center">
           <Link href="/contact">
             <Button className="bg-green-600 text-white hover:bg-green-700 rounded-full px-8 font-bold text-base h-11 shadow-md hover:shadow-lg transition-all">
               Contact
@@ -115,13 +115,13 @@ export function Header() {
                       priority
                     />
                   </div>
-                  <Button
-                    variant="ghost"
-                    className="px-2 text-gray-500 hover:text-green-600 hover:bg-green-50"
+                  <button
+                    className="p-2 text-gray-500 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
                     onClick={() => setIsOpen(false)}
+                    aria-label="Close menu"
                   >
-                    <X className="h-8 w-8" />
-                  </Button>
+                    <X className="h-6 w-6" />
+                  </button>
                 </div>
                 <div className="flex flex-col gap-8 p-8 mt-4">
                   {navLinks.map((link) => {
@@ -141,11 +141,13 @@ export function Header() {
                       </Link>
                     )
                   })}
-                  <Link href="/contact" onClick={() => setIsOpen(false)} className="mt-4">
-                    <Button className="w-full bg-green-600 text-white hover:bg-green-700 rounded-full text-xl font-bold h-14 shadow-lg">
-                      Contact
-                    </Button>
-                  </Link>
+                  <div className="flex flex-col gap-4 mt-4">
+                    <Link href="/contact" onClick={() => setIsOpen(false)}>
+                      <Button className="w-full bg-green-600 text-white hover:bg-green-700 rounded-full text-xl font-bold h-14 shadow-lg">
+                        Contact
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </SheetContent>
